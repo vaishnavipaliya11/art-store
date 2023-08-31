@@ -1,0 +1,93 @@
+.cat-img {
+  width: 8rem;
+  height: 8rem;
+}
+.category-container {
+  gap: 2rem;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(121, 88, 159, 0.6896008403361344) 100%
+  );
+  padding: 1rem;
+}
+.cat-fs {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+.cat-gap {
+  gap: 5px;
+  transition: transform 0.3s;
+}
+.cat-gap:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.cat-img:hover {
+  transform: rotate();
+}
+.cat-fs:hover {
+  border-bottom: 2px solid var(--primary-clr);
+}
+.picks-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.picks-card {
+  border-radius: 10px;
+  overflow: hidden; /* This ensures the image doesn't overflow the rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.picks-card-inner {
+  position: relative;
+  text-align: center;
+}
+.picks-card:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.picks-img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border-radius: 10px; /* To match the parent's border radius */
+}
+.pick-fs {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+.cat-fs {
+  margin-top: 10px; /* Adjust as needed */
+  font-size: 16px; /* Adjust as needed */
+}
+.top-picks {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+.top-picks:hover .arrow {
+  cursor: pointer;
+  transform: translateX(5px); /* Adjust the distance as needed */
+}
+.arrow {
+  transition: transform 0.3s;
+}
+
+.projectDetails-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+ 
+}
+.gradient-green{
+  background: rgb(236,252,203);
+background: linear-gradient(90deg, rgba(236,252,203,1) 0%, rgba(255,255,255,1) 50%, rgba(236,252,203,1) 100%);
+}
+.inspiration-set-one img{
+  max-width: 10rem;
+}

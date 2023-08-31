@@ -1,0 +1,93 @@
+/* styles.css */
+
+.product-card {
+  border: 1px solid #ddd;
+  max-width: 280px;
+  margin: 0.5rem auto;
+  /* text-align: center; */
+}
+
+.image-container {
+  position: relative;
+}
+
+.product-image {
+  max-width: 100%;
+  min-height: 15rem;
+}
+
+.wishlist-btn {
+  position: absolute;
+  top: 2px; /* Adjust this value to position the button as desired */
+  right: 2px; /* Adjust this value to position the button as desired */
+  padding: 4px 6px;
+  border: none;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+
+  color: white;
+  cursor: pointer;
+}
+
+.product-title {
+  font-size: 1rem;
+  /* margin: 10px 0; */
+}
+
+.product-price {
+  font-size: 0.9rem;
+  color: #e74c3c;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.add-to-cart-btn {
+  padding: 5px 8px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+}
+
+.edit-btn:hover,
+.wishlist-btn:hover {
+  background-color: #d1d5db;
+}
+
+.lower-card-info {
+  margin: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.mr-xs {
+  margin: 0;
+  padding: 0;
+}
+
+.fs-span {
+  font-size: 0.8rem;
+}
+
+video {
+  width: 100%;
+  height: auto; 
+}
+
+.edit-btn{
+  position: absolute;
+  top: 2px; 
+  right: 2px; 
+  padding: 4px 6px;
+  border: none;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  background-color: #f1f5f9;
+  color:#1e293b;
+}

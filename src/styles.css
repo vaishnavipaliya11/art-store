@@ -1,0 +1,231 @@
+:root {
+  --primary-clr: #79589f;
+  --secondary: #79589fd9;
+
+  --secondary-clr: hsl(193, 21%, 92%);
+  --brown-clr:#9e1327;
+  --gray-clr: #94a3b8;
+  --green-clr:#047857;
+}
+.main-container {
+  display: grid;
+  grid-template-rows: 5rem 5fr 5rem;
+  overflow: auto;
+  gap: 1rem;
+}
+.common-flex {
+  display: flex;
+}
+.common-col {
+  display: flex;
+  flex-direction: column;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.gap-xxs{
+  gap:0.2rem
+}
+.gap-xs {
+  gap: 0.5rem;
+}
+.gap-sm {
+  gap: 1.5rem;
+}
+.gap-med {
+  gap: 2rem;
+}
+.a-start {
+  align-items: flex-start;
+}
+.a-center {
+  align-items: center;
+}
+.j-center {
+  justify-content: center;
+}
+.jst-sp-bet {
+  justify-content: space-between;
+}
+.js-around {
+  justify-content: space-around;
+}
+.js-evenly{
+  justify-content: space-evenly;
+}
+
+.img-br-half {
+  border-radius: 50%;
+}
+.nav-container {
+  padding: 1rem 0;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 6px 24px 0 rgba(0,0,0,.05), 0 0 0 1px rgba(0,0,0,.08);
+}
+.layout-mr {
+  margin: 0 2rem;
+}
+.mr-ssm {
+  margin: 0.5rem;
+}
+.mr-sm-top {
+  margin: 0 1rem;
+}
+.mr-sm-btm{
+  margin: 1rem 0;
+}
+.mr-sm {
+  margin: 1rem;
+}
+.mr-med {
+  margin: 2rem;
+}
+.pd-sm {
+  padding: 0.5rem;
+}
+.pd-med {
+  padding: 1.2rem;
+}
+.fs-xs{
+  font-size: 14px;
+}
+.fs-sm{
+  font-size: 1rem;
+  font-weight: revert;
+}
+.fs-med {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.fs-bg {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.fm-cur {
+  font-family: cursive;
+}
+.crousel-img {
+  width: 100%;
+  height: 30rem;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+}
+
+.footer-container {
+  background-color: var(--secondary-clr);
+}
+.social-icon:hover {
+  cursor: pointer;
+}
+
+.border-gray {
+  border: 1px solid var(--gray-clr);
+}
+.text-primary{
+  color: var(--primary-clr);
+}
+.text-gray {
+  color: var(--gray-clr);
+}
+.text-filter{
+  color: #9ca3af;
+  font-weight: 600;
+}
+.font-sm{
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: var(--primary-clr);
+  color: whitesmoke;
+  border-radius: 5px;
+  padding: 5px 8px;
+  border: none;
+}
+.btn-primary:hover {
+  cursor: pointer;
+  background-color: var(--secondary);
+}
+
+.btn-secondary {
+  background-color: #f8fafc;
+  color: var(--primary-clr);
+  border-radius: 5px;
+  padding: 5px 8px;
+  border: 2px solid var(--primary-clr);
+}
+.btn-secondary:hover {
+  cursor: pointer;
+  border: 2px solid var(--primary-clr);
+  background-color: #f1f5f9;
+}
+.read-more-btn{
+  background: none;
+  color: var(--primary-clr);
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.read-more-btn:focus{
+  outline: 0;
+  cursor: pointer;
+}
+.horizontal-line {
+  position: relative;
+  width: 100%;
+  height: 1px; /* Set the height of the horizontal line */
+  background-color: var(--gray-clr); /* Set the color of the line */
+  margin: 10px 0; /* Adjust margin as needed */
+}
+
+.horizontal-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px; /* Set the height of the pseudo-element to match the line */
+  background-color: var(--gray-clr); /* Set the color of the pseudo-element */
+}
+
+.three-layout-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.all-prod-container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  margin: 2rem 0;
+}
+.add-new-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 3rem;
+}
+
+.img-border {
+  border-radius: 5px;
+}
+
+Hide the scrollbar in webkit-based browsers
+::-webkit-scrollbar {
+  width: 0.1rem; /* Width of the vertical scrollbar */
+  height: 0.1rem; /* Height of the horizontal scrollbar */
+}
+
+/* Hide scrollbar track */
+::-webkit-scrollbar-track {
+  background: transparent; /* Hide the scrollbar track */
+}
+
+/* Hide scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: transparent; /* Hide the scrollbar thumb */
+}

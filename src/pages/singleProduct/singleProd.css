@@ -1,0 +1,32 @@
+.single-prod-container {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: auto; /* Horizontal layout */
+}
+
+.image-container {
+  flex: 1; /* Take up all available space */
+}
+
+.product-details {
+  flex: 1; /* Take up all available space */
+  margin:  1rem;/* Add some padding for spacing */
+}
+
+.image-container img {
+  width: 100%; /* Make the image cover 100% of its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.lines-ft{
+  font-size: 15px;
+}
+.logo-clr{
+  color: var(--primary-clr);
+  font-size: 1.2rem;
+}
+.price{
+  font-size: 18px;
+  font-weight: 600;
+}
