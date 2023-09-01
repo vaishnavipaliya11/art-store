@@ -57,6 +57,10 @@
 .wishlist-btn:hover {
   background-color: #d1d5db;
 }
+.wishlist-btn:focus {
+  outline: 0;
+  cursor: pointer;
+}
 
 .lower-card-info {
   margin: 0.8rem;
@@ -77,17 +81,23 @@
 
 video {
   width: 100%;
-  height: auto; 
+  height: auto;
 }
 
-.edit-btn{
+.edit-btn {
   position: absolute;
-  top: 2px; 
-  right: 2px; 
+  top: 2px;
+  right: 2px;
   padding: 4px 6px;
   border: none;
   border-radius: 50%;
   background-color: #e2e8f0;
   background-color: #f1f5f9;
-  color:#1e293b;
+  color: #1e293b;
 }
+.icon {
+  /* color:#ec4899; */
+  color: #f43f5e;
+  font-size: 18px;
+}
+/*  */

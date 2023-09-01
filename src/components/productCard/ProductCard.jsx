@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./card.css";
 import "../../styles.css";
 import { Link, useNavigate } from "react-router-dom";
 import { generateRandomRating } from "../../util/generateRating";
 import { useDispatch, useSelector } from "react-redux";
-import { AiOutlineDelete, AiTwotoneEdit } from "react-icons/ai";
+import { AiOutlineHeart,AiTwotoneHeart, AiTwotoneEdit } from "react-icons/ai";
 import { deleteProduct } from "../../features/product/helpers/deleteProduct";
 import { postCart } from "../../features/cart/helpers/postCart";
 import { getCart } from "../../features/cart/helpers/getCart";
 import { setEditedProductId } from "../../features/product/productSlice";
+import { postWishlist } from "../../features/wishlist/helpers/postWishlist";
+import { getWishlist } from "../../features/wishlist/helpers/getWishlist";
+import { deleteWishlist } from "../../features/wishlist/helpers/deleteWishlist";
+
 const ProductCard = ({ data }) => {
   const { isAdmin } = useSelector((store) => store.auth);
+  const { allwishlistProducts } = useSelector((store) => store.wishlist);
   const dispatch = useDispatch();
   const {
     title,
@@ -20,11 +25,40 @@ const ProductCard = ({ data }) => {
     description,
     highlights,
     userId,
-    id,rating
+    id,
+    rating,
   } = data;
   const navigate = useNavigate();
 
-  //  <Link to={`/singleproduct/${_id}`}>
+  const wishlistItems = allwishlistProducts.map(
+    (product) => product.wishlistItem
+  );
+
+  const wishlistProductIds = wishlistItems.map(
+    (wishlistItem) => wishlistItem.productId
+  );
+
+  console.log(wishlistProductIds, "wishlistProductIds");
+
+  console.log(wishlistItems.productId, "wishlistItems");
+
+  const productIdsInWishlist = allwishlistProducts.map(
+    (product) => product.wishlistItem.productId
+  );
+
+  const handleWishlistClick = (cardProdId) => {
+    if (productIdsInWishlist.includes(cardProdId)) {
+      dispatch(deleteWishlist(id));
+      dispatch(getWishlist());
+    } else {
+      dispatch(postWishlist(id));
+      dispatch(getWishlist());
+    }
+  };
+
+  useEffect(() => {
+    dispatch(getWishlist());
+  }, []);
   return (
     <div class="product-card">
       {/* <Link to={`/product/${id}`}> */}
@@ -40,7 +74,18 @@ const ProductCard = ({ data }) => {
             <AiTwotoneEdit />
           </button>
         ) : (
-          <button class="wishlist-btn">❤️</button>
+          <button
+            class="wishlist-btn"
+            onClick={() => {
+              handleWishlistClick(id);
+            }}
+          >
+            {productIdsInWishlist.includes(id) ? (
+              <AiTwotoneHeart  className="icon"/>
+            ) : (
+              <AiOutlineHeart className="icon"/>
+            )}
+          </button>
         )}
         {imageUrl ? (
           <img src={imageUrl} alt="Product Image" class="product-image" />
@@ -51,6 +96,7 @@ const ProductCard = ({ data }) => {
           </video>
         )}
       </div>
+
       {/* </Link> */}
       <div class="lower-card-info">
         <Link to={`/product/${id}`}>

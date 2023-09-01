@@ -63,7 +63,7 @@ const AllProducts = () => {
   // console.log("Products in multiple categories:", multiCategoryProducts);
 
   // Now, 'productsByCategory' contains products grouped by category with a rating of 3 or above
-  // console.log(productsByCategory);
+  console.log(allProducts);
 
   
   return (

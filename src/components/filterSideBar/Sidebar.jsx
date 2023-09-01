@@ -2,6 +2,8 @@ import React from "react";
 import "../../styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addCategories,
+  clearFilter,
   filterCategories,
   filterProdHighToLow,
   filterProdLowToHigh,
@@ -10,9 +12,10 @@ import {
   filterRatingThreeAbove,
   filterRatingTwoAbove,
 } from "../../features/product/productSlice";
+import { getProducts } from "../../features/product/helpers/getAllProduct";
 const Sidebar = () => {
   const dispatch = useDispatch();
-  // const products = useSelector((state) => state.products.allProducts);
+  const {filterProd} = useSelector((store) => store.product);
 
   const handleSortClick = () => {
     dispatch(filterProdLowToHigh());
@@ -21,7 +24,10 @@ const Sidebar = () => {
     <div>
       <div className="common-flex jst-sp-bet">
         <h3>Filters</h3>
-        <button className="read-more-btn">Clear</button>
+        <button className="read-more-btn" onClick={()=> {
+          dispatch(clearFilter())
+          dispatch(getProducts())
+        }}>Clear</button>
       </div>
       <div className="common-col gap-sm ">
         <div>
@@ -31,6 +37,7 @@ const Sidebar = () => {
               <input
                 type="radio"
                 name="sort"
+                value={filterProd.lowtoHigh}
                 onChange={() => {
                   dispatch(filterProdLowToHigh());
                 }}
@@ -40,7 +47,7 @@ const Sidebar = () => {
             <label>
               <input
                 name="sort"
-                type="radio"
+                type="radio"value={filterProd.hightoLow}
                 onChange={() => {
                   dispatch(filterProdHighToLow());
                 }}
@@ -55,6 +62,7 @@ const Sidebar = () => {
             <label>
               <input
                 type="checkbox"
+                // value={filterProd}
                 onChange={() => {
                   dispatch(filterCategories("gift"));
                 }}
@@ -74,6 +82,7 @@ const Sidebar = () => {
               <input
                 type="checkbox"
                 onChange={() => {
+                  dispatch(addCategories("Decor"));
                   dispatch(filterCategories("Decor"));
                 }}
               />{" "}
@@ -83,6 +92,7 @@ const Sidebar = () => {
               <input
                 type="checkbox"
                 onChange={() => {
+                  dispatch(addCategories("prints"))
                   dispatch(filterCategories("prints"));
                 }}
               />{" "}

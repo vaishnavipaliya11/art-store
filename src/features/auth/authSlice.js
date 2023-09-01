@@ -4,7 +4,7 @@ export const initialState = {
   isLoggedIn: true,
   authUser:'',
   loading: true,
-  isAdmin:true,
+  isAdmin:false,
 };
 
 export const authSlice = createSlice({

@@ -210,6 +210,11 @@
   margin: 0 3rem;
 }
 
+.wishlist-prod-container {
+ margin: auto;
+ width: 87%;
+}
+
 .img-border {
   border-radius: 5px;
 }

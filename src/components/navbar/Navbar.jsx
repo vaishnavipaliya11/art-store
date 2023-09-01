@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineShoppingCart , AiOutlineHeart} from "react-icons/ai";
+import { BsBasket } from "react-icons/bs";
+
 import { BiSolidUser } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import "./navbar.css";
@@ -28,10 +30,19 @@ const Navbar = () => {
         <input type="search" placeholder="Search" />
       </div>
       <div className="jst-sp-bet common-flex a-center gap-sm">
-        <p>Shop</p>
+        
+        <p className="para" onClick={() => navigate("/wishlist")}>
+          {" "}
+          <AiOutlineHeart className="icons"/>{" "}
+          {allCartProducts ? (
+            <span className="badge">{allCartProducts?.length}</span>
+          ) : (
+            ""
+          )}
+        </p>
         <p className="para" onClick={() => navigate("/cart")}>
           {" "}
-          <AiOutlineShoppingCart />{" "}
+          <BsBasket />{" "}
           {allCartProducts ? (
             <span className="badge">{allCartProducts?.length}</span>
           ) : (

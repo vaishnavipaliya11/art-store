@@ -10,6 +10,7 @@ export const initialState = {
   loading: true,
   editedProductId: "",
   isEditProduct: false,
+  categories: [],
   filterProd: {
     categories: [],
     rating: 2,
@@ -48,34 +49,54 @@ export const productSlice = createSlice({
       );
     },
     filterRatingOneAbove: (state, action) => {
-      state.allProducts = state.allProducts.filter((product) => product.rating >= 1);
+      state.allProducts = state.allProducts.filter(
+        (product) => product.rating >= 1
+      );
     },
     filterRatingTwoAbove: (state, action) => {
-      state.allProducts = state.allProducts.filter((product) => product.rating >= 2);
+      state.allProducts = state.allProducts.filter(
+        (product) => product.rating >= 2
+      );
     },
     filterRatingThreeAbove: (state, action) => {
       // state.filterProd.hightoLow = true;
       // state.filterProd.lowtoHigh=false
-      state.allProducts = state.allProducts.filter((product) => product.rating >= 3);
+      state.allProducts = state.allProducts.filter(
+        (product) => product.rating >= 3
+      );
     },
     filterRatingFourAbove: (state, action) => {
-      state.allProducts = state.allProducts.filter((product) => product.rating >= 4);
+      state.allProducts = state.allProducts.filter(
+        (product) => product.rating >= 4
+      );
+    },
+    addCategories: (state, action) => {
+      return {
+        ...state,
+        categories: [...state.categories, ...action.payload], // Add new categories from payload
+      };
     },
     filterCategories: (state, action) => {
-      const categories = action.payload;
-      if (Array.isArray(categories)) {
+      state.categories.push(action.payload);
+      console.log(state.categories);
+
+      if (state.categories) {
         // Filter products matching any of the specified categories
         state.allProducts = state.allProducts.filter((product) =>
-          categories.includes(product.category)
+          state.categories.includes(product.category)
         );
       } else {
-        // Filter state.allProducts matching the single specified category
-        state.allProducts = state.allProducts.filter((product) =>
-          product.category === categories
-        );
+        // If no categories are specified or the array is empty, show all products
+        state.allProducts = state.allProducts;
       }
     },
-    
+
+    clearFilter: (state) => {
+      (state.filterProd.categories = []),
+        (state.filterProd.hightoLow = false),
+        (state.filterProd.rating = 0);
+      state.filterProd.lowtoHigh = false;
+    },
   },
 
   extraReducers: (builder) => {
@@ -136,5 +157,7 @@ export const {
   filterRatingOneAbove,
   filterRatingThreeAbove,
   filterRatingTwoAbove,
+  addCategories,
+  clearFilter,
 } = productSlice.actions;
 export default productSlice.reducer;
