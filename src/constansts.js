@@ -1,4 +1,3 @@
-
 export const homeTag =
   " Explore Unique Creations: Uncover Artistry from Independent Makers";
 export const categorySet = [
@@ -94,7 +93,42 @@ export const projectDetails = [
   },
 ];
 
+export const addAddressInput = [
+  {
+    title: "Street",
+    type: "text",
+    name: "street",
+    placeholder: "Enter the street",
+  },
+  {
+    title: "City",
+    type: "text",
+    name: "city",
+    placeholder: "Enter the city",
+  },
+  {
+    title: "State",
+    type: "text",
+    name: "state",
+    placeholder: "Enter the state",
+  },
+  {
+    title: "Postal Code",
+    type: "text",
+    name: "postalCode",
+    placeholder: "Enter the postal code",
+  },
 
-
-
-
+  {
+    title: "Country",
+    type: "text",
+    name: "country",
+    placeholder: "Enter the country",
+  },
+  {
+    title: "Mobile Number",
+    type: "text",
+    name: "mobileNumber",
+    placeholder: "Enter the mobileNumber",
+  },
+];

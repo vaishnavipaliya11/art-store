@@ -29,6 +29,9 @@
 .gap-xs {
   gap: 0.5rem;
 }
+.gap-xsm{
+  gap:1rem
+}
 .gap-sm {
   gap: 1.5rem;
 }
@@ -102,6 +105,9 @@
 .fs-bg {
   font-size: 1.5rem;
   font-weight: 500;
+}
+.fs-xbg{
+  font-size: 1.5rem;
 }
 .fm-cur {
   font-family: cursive;
@@ -217,6 +223,19 @@
 
 .img-border {
   border-radius: 5px;
+}
+
+.address-input{
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  padding: 2px;
+  border-radius: 3px;
+}
+.address-input:focus{
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.address-form-width{
+  min-width: 60%;
 }
 
 Hide the scrollbar in webkit-based browsers

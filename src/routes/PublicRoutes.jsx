@@ -8,6 +8,7 @@ import SingleProduct from "../pages/singleProduct/SingleProduct";
 import AddNewProd from "../pages/addNewProd/AddNewProd";
 import Cart from "../pages/cart/Cart";
 import Wishlist from "../pages/wishlist/Wishlist";
+import Address from "../pages/address/Address";
 
 const PublicRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const PublicRoutes = () => {
         <Route path="/add-new-prod" element={<AddNewProd />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/wishlist" element={<Wishlist />}></Route>
+        <Route path="/address" element={<Address />}></Route>
       </Routes>
     </div>
   );
