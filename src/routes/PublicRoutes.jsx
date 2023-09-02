@@ -9,6 +9,7 @@ import AddNewProd from "../pages/addNewProd/AddNewProd";
 import Cart from "../pages/cart/Cart";
 import Wishlist from "../pages/wishlist/Wishlist";
 import Address from "../pages/address/Address";
+import Review from "../pages/review/Review";
 
 const PublicRoutes = () => {
   return (
@@ -26,6 +27,7 @@ const PublicRoutes = () => {
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/wishlist" element={<Wishlist />}></Route>
         <Route path="/address" element={<Address />}></Route>
+        <Route path="/review" element={<Review />}></Route>
       </Routes>
     </div>
   );

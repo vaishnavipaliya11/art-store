@@ -112,6 +112,12 @@
 .fm-cur {
   font-family: cursive;
 }
+.a-start{
+  align-items: flex-start;
+}
+.gap-bg{
+  gap:2.5rem
+}
 .crousel-img {
   width: 100%;
   height: 30rem;

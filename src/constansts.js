@@ -95,6 +95,12 @@ export const projectDetails = [
 
 export const addAddressInput = [
   {
+    title: "Full Name",
+    type: "text",
+    name: "fullName",
+    placeholder: "Enter the full name",
+  },
+  {
     title: "Street",
     type: "text",
     name: "street",

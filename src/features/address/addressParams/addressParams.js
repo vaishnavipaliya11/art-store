@@ -25,6 +25,20 @@ export const getAddressParam = () => {
   };
 };
 
+export const singleAddressParam = (id) => {
+    return {
+      url: `address/${id}`,
+      method: "GET",
+      headers: {
+        Authorization: "Bearer yourAccessToken",
+        "Content-Type": "application/json",
+      },
+      data: {
+        key1: "value1",
+        key2: "value2",
+      },
+    };
+  };
 export const updateAddressParam = (id, payload) => {
   return {
     url: `/address/${id}`,
