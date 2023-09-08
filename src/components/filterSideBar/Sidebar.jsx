@@ -15,19 +15,25 @@ import {
 import { getProducts } from "../../features/product/helpers/getAllProduct";
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const {filterProd} = useSelector((store) => store.product);
+  const { filterProd, categories } = useSelector((store) => store.product);
 
   const handleSortClick = () => {
     dispatch(filterProdLowToHigh());
   };
+  console.log(categories, "action.payload");
   return (
     <div>
       <div className="common-flex jst-sp-bet">
         <h3>Filters</h3>
-        <button className="read-more-btn" onClick={()=> {
-          dispatch(clearFilter())
-          dispatch(getProducts())
-        }}>Clear</button>
+        <button
+          className="read-more-btn"
+          onClick={() => {
+            dispatch(clearFilter());
+            dispatch(getProducts());
+          }}
+        >
+          Clear
+        </button>
       </div>
       <div className="common-col gap-sm ">
         <div>
@@ -47,7 +53,8 @@ const Sidebar = () => {
             <label>
               <input
                 name="sort"
-                type="radio"value={filterProd.hightoLow}
+                type="radio"
+                value={filterProd.hightoLow}
                 onChange={() => {
                   dispatch(filterProdHighToLow());
                 }}
@@ -64,6 +71,16 @@ const Sidebar = () => {
                 type="checkbox"
                 // value={filterProd}
                 onChange={() => {
+                  {
+                    categories.includes("gift")
+                      ? dispatch(
+                          addCategories(
+                            ""
+                            // categories.filter((data) => data !== "gift")
+                          )
+                        )
+                      : dispatch(addCategories([...categories, "gift"]));
+                  }
                   dispatch(filterCategories("gift"));
                 }}
               />{" "}
@@ -92,7 +109,7 @@ const Sidebar = () => {
               <input
                 type="checkbox"
                 onChange={() => {
-                  dispatch(addCategories("prints"))
+                  dispatch(addCategories("prints"));
                   dispatch(filterCategories("prints"));
                 }}
               />{" "}

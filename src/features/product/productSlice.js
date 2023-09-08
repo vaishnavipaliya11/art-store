@@ -12,7 +12,6 @@ export const initialState = {
   isEditProduct: false,
   categories: [],
   filterProd: {
-    categories: [],
     rating: 2,
     price: 1,
     lowtoHigh: false,
@@ -71,24 +70,22 @@ export const productSlice = createSlice({
       );
     },
     addCategories: (state, action) => {
+      console.log(action.payload, "action.payload");
       return {
         ...state,
         categories: [...state.categories, ...action.payload], // Add new categories from payload
       };
     },
     filterCategories: (state, action) => {
-      state.categories.push(action.payload);
-      console.log(state.categories);
+      let allProducts = [...state.allProducts];
 
-      if (state.categories) {
-        // Filter products matching any of the specified categories
-        state.allProducts = state.allProducts.filter((product) =>
-          state.categories.includes(product.category)
+      if (categories.length > 0) {
+        allProducts = allProducts.filter((prod) =>
+          categories.includes(prod.categoryName)
         );
-      } else {
-        // If no categories are specified or the array is empty, show all products
-        state.allProducts = state.allProducts;
       }
+
+      return allProducts;
     },
 
     clearFilter: (state) => {

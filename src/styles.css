@@ -204,9 +204,18 @@
   background-color: var(--gray-clr); /* Set the color of the pseudo-element */
 }
 
+.two-grid-layout{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .three-layout-grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+.four-layout-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .all-prod-container {

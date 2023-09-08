@@ -12,6 +12,11 @@ import {
   projectDetails,
   homeEverydayInspirationSetOne,
   homeEverydayInspirationSetTwo,
+  posterImgOne,
+  posterImgTwo,
+  posterTagOne,
+  posterTagTwo,
+  multipleImgSet,
 } from "../../constansts";
 import Footer from "../../components/footer/Footer";
 
@@ -83,7 +88,64 @@ const Home = () => {
             </h3>
           </div>
         </div>
-        <div className="common-col a-center gap-sm pd-med gradient-green" >
+
+        <div className="common-col j-center a-center gap-sm border-gray pd-med mr-med layout-mr ">
+          <div className="common-flex a-center gap-xs">
+            {posterImgOne?.map(({ img, text, video }) => {
+              return (
+                <div className="inspiration-set-one">
+                  {img ? (
+                    <img src={img} alt={text} />
+                  ) : (
+                    <video style={{ width: "20rem", height: "10rem" }} controls>
+                      <source src={video} type="video/mp4"></source>
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          <div className="common-flex a-center gap-xs">
+            {posterImgTwo?.map(({ img, text, video }) => {
+              return (
+                <div className="inspiration-set-one ">
+                  {img ? (
+                    <img src={img} alt={text} />
+                  ) : (
+                    <video style={{ width: "20rem", height: "10rem" }} controls>
+                      <source src={video} type="video/mp4"></source>
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="common-flex a-center gap-xs">
+            <div className="common-flex gap-xs">
+              <video style={{ width: "40%", height: "40%" }} controls>
+                <source
+                  src="https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/20221102_155505_taoz7r.mp4"
+                  type="video/mp4"
+                ></source>
+                Your browser does not support the video tag.
+              </video>
+              <div className="three-layout-grid gap-xxs">
+                {multipleImgSet.map(({ img, text }) => {
+                  return (
+                    <div>
+                      <img src={img} alt={text} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="common-col a-center gap-sm pd-med gradient-green">
           <h2 className="fs-bg top-picks">What is Store?</h2>
 
           <div className="projectDetails-container layout-mr">

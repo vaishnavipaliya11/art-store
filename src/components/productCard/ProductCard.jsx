@@ -4,7 +4,7 @@ import "../../styles.css";
 import { Link, useNavigate } from "react-router-dom";
 import { generateRandomRating } from "../../util/generateRating";
 import { useDispatch, useSelector } from "react-redux";
-import { AiOutlineHeart,AiTwotoneHeart, AiTwotoneEdit } from "react-icons/ai";
+import { AiOutlineHeart, AiTwotoneHeart, AiTwotoneEdit } from "react-icons/ai";
 import { deleteProduct } from "../../features/product/helpers/deleteProduct";
 import { postCart } from "../../features/cart/helpers/postCart";
 import { getCart } from "../../features/cart/helpers/getCart";
@@ -29,18 +29,6 @@ const ProductCard = ({ data }) => {
     rating,
   } = data;
   const navigate = useNavigate();
-
-  const wishlistItems = allwishlistProducts.map(
-    (product) => product.wishlistItem
-  );
-
-  const wishlistProductIds = wishlistItems.map(
-    (wishlistItem) => wishlistItem.productId
-  );
-
-  console.log(wishlistProductIds, "wishlistProductIds");
-
-  console.log(wishlistItems.productId, "wishlistItems");
 
   const productIdsInWishlist = allwishlistProducts.map(
     (product) => product.wishlistItem.productId
@@ -81,9 +69,9 @@ const ProductCard = ({ data }) => {
             }}
           >
             {productIdsInWishlist.includes(id) ? (
-              <AiTwotoneHeart  className="icon"/>
+              <AiTwotoneHeart className="icon" />
             ) : (
-              <AiOutlineHeart className="icon"/>
+              <AiOutlineHeart className="icon" />
             )}
           </button>
         )}

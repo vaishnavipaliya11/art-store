@@ -1,5 +1,68 @@
 export const homeTag =
   " Explore Unique Creations: Uncover Artistry from Independent Makers";
+
+export const posterTagOne =
+  "Unearth exceptional creations by independent artists";
+export const posterTagTwo = "Experience the world of independent craftsmanship";
+
+export const posterImgOne = [
+  {
+    text: "wall art",
+    video:
+      "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/aynagenel_end7zq.mp4",
+  },
+  {
+    text: "serving",
+    img: "https://i.etsystatic.com/7618912/c/2250/2250/0/442/il/4c8bbd/3553272361/il_300x300.3553272361_h0f1.jpg",
+  },
+  {
+    text: "candle video",
+    video:
+      "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/8.1929x1080_yaz0p7.mp4",
+  },
+  {
+    text: "wall art",
+    img: "https://i.etsystatic.com/31883333/r/il/89578e/3778957555/il_300x300.3778957555_i2q4.jpg",
+  },
+
+  {
+    text: "rugs",
+    img: "https://i.etsystatic.com/35914818/c/1088/1088/0/521/il/61110d/4268982761/il_300x300.4268982761_d2ta.jpg",
+  },
+];
+
+export const multipleImgSet = [
+  { text: "", img: "https://i.etsystatic.com/41448540/c/1485/1485/0/315/il/58713d/4660641302/il_300x300.4660641302_4k2l.jpg" },
+  { text: "", img: "https://i.etsystatic.com/22700966/r/il/f1ae2f/4715011535/il_300x300.4715011535_d070.jpg" },
+  { text: "", img: "https://i.etsystatic.com/26474219/r/il/8bed31/3037799525/il_300x300.3037799525_8eca.jpg" },
+  { text: "", img: "https://i.etsystatic.com/22584408/c/799/799/27/1/il/d3f142/4333482315/il_300x300.4333482315_lv5e.jpg" },
+];
+
+export const posterImgTwo = [
+  {
+    text: "earrings",
+    img: "https://i.etsystatic.com/39706408/r/il/e09727/4703695684/il_300x300.4703695684_at08.jpg",
+  },
+  {
+    text: "festive",
+    video:
+      "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/YouCut_20220420_113733900_eydg4t.mp4",
+  },
+  {
+    text: "ring",
+    img: "https://i.etsystatic.com/34248510/r/il/62bd15/3688783120/il_300x300.3688783120_o7c1.jpg",
+  },
+  {
+    text: "video of candle",
+    video:
+      "https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/PRISM_20230211_151330_ahh89r.mp4",
+  },
+  {
+    text: "bowl",
+    img: "https://i.etsystatic.com/20131565/r/il/9d9136/3473568011/il_300x300.3473568011_olcc.jpg",
+  },
+];
+
 export const categorySet = [
   {
     name: "Jewelry",
