@@ -40,6 +40,7 @@ export const singleAddressParam = (id) => {
     };
   };
 export const updateAddressParam = (id, payload) => {
+  console.log(id,"id");
   return {
     url: `/address/${id}`,
     method: "PUT",

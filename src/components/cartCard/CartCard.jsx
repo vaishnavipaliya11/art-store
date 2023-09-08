@@ -60,7 +60,7 @@ const CartCard = ({data}) => {
       <div className="common-col jst-sp-bet">
         <div>
           <h2 className="fs-med">₹{price}</h2>
-          <p className="text-br-clr">{generateRandomText()}</p>
+          <p className="text-gray">{generateRandomText()}</p>
         </div>
         <div>
           <p>

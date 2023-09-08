@@ -9,12 +9,14 @@ import { postAddress } from "../../features/address/helpers/postAddress";
 import "../../styles.css";
 import { getSingleAddress } from "../../features/address/helpers/getSingleAddress";
 import { updateAddress } from "../../features/address/helpers/updateAddress";
+import { getAddress } from "../../features/address/helpers/getAddress";
+import { useNavigate } from "react-router-dom";
 const AddressForm = () => {
   const dispatch = useDispatch();
   const { addressDetailsInput, selectedAddressId, singleAddress, isEditMode } =
     useSelector((store) => store.address);
-
-  console.log(singleAddress, "singleAddress");
+  const navigate= useNavigate()
+  
   useEffect(() => {
     dispatch(getSingleAddress(selectedAddressId));
   }, []);
@@ -22,13 +24,18 @@ const AddressForm = () => {
   useEffect(() => {
     dispatch(setEditAddress(singleAddress));
   }, [singleAddress]);
-  console.log(addressDetailsInput, addressDetailsInput);
 
   const handleAddressClick = () => {
     if (isEditMode) {
-      dispatch(updateAddress(addressDetailsInput));
+      console.log("addressDetailsInput", addressDetailsInput);
+
+      dispatch(
+        updateAddress({ id: singleAddress.id, payload: addressDetailsInput })
+      );
+      dispatch(getAddress());
     } else {
       dispatch(postAddress(addressDetailsInput));
+      dispatch(getAddress());
     }
   };
 
@@ -68,6 +75,7 @@ const AddressForm = () => {
         className="btn-primary"
         onClick={() => {
           handleAddressClick();
+          navigate("/review")
         }}
       >
         {isEditMode ? "Edit Address" : "Save Address"}

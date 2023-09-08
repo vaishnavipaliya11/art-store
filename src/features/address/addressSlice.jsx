@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getAddress } from "./helpers/getAddress";
 import { postAddress } from "./helpers/postAddress";
 import { getSingleAddress } from "./helpers/getSingleAddress";
+import { updateAddress } from "./helpers/updateAddress";
 
 export const initialState = {
   allAddress: [],
@@ -12,11 +13,11 @@ export const initialState = {
     postalCode: "",
     country: "",
     mobileNumber: "",
-    fullName:""
+    fullName: "",
   },
-  singleAddress:{},
-  selectedAddressId:"",
-  isEditMode:false
+  singleAddress: {},
+  selectedAddressId: "",
+  isEditMode: false,
 };
 
 export const addressSlice = createSlice({
@@ -34,14 +35,13 @@ export const addressSlice = createSlice({
         },
       };
     },
-    setSelectedAddress:(state,action) =>{
-      state.isEditMode=true
-      state.selectedAddressId= action.payload
+    setSelectedAddress: (state, action) => {
+      state.isEditMode = true;
+      state.selectedAddressId = action.payload;
     },
-    setEditAddress:(state,action) =>{
-      state.addressDetailsInput= action.payload
-      
-    }
+    setEditAddress: (state, action) => {
+      state.addressDetailsInput = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -50,7 +50,6 @@ export const addressSlice = createSlice({
         state.loading = true;
       })
       .addCase(getAddress.fulfilled, (state, { payload }) => {
-        console.log(payload,"payload");
         state.allAddress = payload;
         state.loading = false;
       })
@@ -68,7 +67,7 @@ export const addressSlice = createSlice({
       .addCase(postAddress.rejected, (state) => {
         state.loading = false;
       });
-      builder
+    builder
       .addCase(getSingleAddress.pending, (state) => {
         state.loading = true;
       })
@@ -79,7 +78,18 @@ export const addressSlice = createSlice({
       .addCase(getSingleAddress.rejected, (state) => {
         state.loading = false;
       });
+    builder
+      .addCase(updateAddress.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateAddress.fulfilled, (state, { payload }) => {
+        state.loading = false;
+      })
+      .addCase(updateAddress.rejected, (state) => {
+        state.loading = false;
+      });
   },
 });
-export const { setAddressInput,setSelectedAddress ,setEditAddress} = addressSlice.actions;
+export const { setAddressInput, setSelectedAddress, setEditAddress } =
+  addressSlice.actions;
 export default addressSlice.reducer;

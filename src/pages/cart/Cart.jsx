@@ -4,15 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../features/cart/helpers/getCart";
 import "../../styles.css";
 import "./cart.css";
-import { generateRandomText } from "../../util/generateRadomText";
 import { calcultateCartPrice } from "../../util/calculateCartPrice";
-import { deleteCart } from "../../features/cart/helpers/deleteCart";
-import { postCart } from "../../features/cart/helpers/postCart";
 import CartCard from "../../components/cartCard/CartCard";
+import "../../styles.css"
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { allCartProducts } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
+  const navigate= useNavigate()
 
   useEffect(() => {
     try {
@@ -55,6 +55,10 @@ const Cart = () => {
             <p className="common-flex jst-sp-bet">
               Total<span>  ₹ {calcultateCartPrice(allCartProducts)} </span>
             </p>
+
+            <button className="btn-primary" onClick={()=>navigate("/address")}>
+              Add address
+            </button>
           </div>
         ) : (
           ""
