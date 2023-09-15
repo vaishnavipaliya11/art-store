@@ -12,17 +12,21 @@ export const initialState = {
   isEditProduct: false,
   categories: [],
   filterProd: {
-    rating: 2,
+    rating: 1,
     price: 1,
     lowtoHigh: false,
     hightoLow: false,
   },
+  cartPrice: 0,
 };
 
 export const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
+    setCartPrice: (state, action) => {
+      state.cartPrice = action.payload;
+    },
     setEditedProductId: (state, action) => {
       state.editedProductId = action?.payload;
       state.isEditProduct = true;
@@ -73,19 +77,28 @@ export const productSlice = createSlice({
       console.log(action.payload, "action.payload");
       return {
         ...state,
-        categories: [...state.categories, ...action.payload], // Add new categories from payload
+        categories: action.payload,
       };
     },
     filterCategories: (state, action) => {
-      let allProducts = [...state.allProducts];
+      console.log("called");
 
-      if (categories.length > 0) {
-        allProducts = allProducts.filter((prod) =>
-          categories.includes(prod.categoryName)
+      // Create a copy of all products
+      let allfilteredProducts = [...state.allProducts];
+
+      if (state.categories.length > 0) {
+        // Filter the products based on selected categories
+        const filteredProducts = allfilteredProducts.filter((prod) =>
+          state.categories.includes(prod.category)
         );
+
+        // Update the state with the filtered products
+        state.allProducts = filteredProducts;
+        console.log(state.allProducts, "filteredProducts");
       }
 
-      return allProducts;
+      // Return a new state object with the filtered products
+      return state.allProducts;
     },
 
     clearFilter: (state) => {
@@ -156,5 +169,6 @@ export const {
   filterRatingTwoAbove,
   addCategories,
   clearFilter,
+  setCartPrice,
 } = productSlice.actions;
 export default productSlice.reducer;

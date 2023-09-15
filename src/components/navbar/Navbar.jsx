@@ -12,6 +12,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { allCartProducts } = useSelector((store) => store.cart);
+  const {allwishlistProducts}= useSelector(store => store.wishlist)
 
   useEffect(() => {
     try {
@@ -27,7 +28,6 @@ const Navbar = () => {
       </p>
 
       <div>
-        <input type="search" placeholder="Search" />
       </div>
       <div className="jst-sp-bet common-flex a-center gap-sm">
         
@@ -35,7 +35,7 @@ const Navbar = () => {
           {" "}
           <AiOutlineHeart className="icons"/>{" "}
           {allCartProducts ? (
-            <span className="badge">{allCartProducts?.length}</span>
+            <span className="badge">{allwishlistProducts?.length}</span>
           ) : (
             ""
           )}
@@ -50,7 +50,7 @@ const Navbar = () => {
           )}
         </p>
         <p>
-          <BiSolidUser />
+          <BiSolidUser onClick={() => navigate("/profile")}/>
         </p>
       </div>
     </div>

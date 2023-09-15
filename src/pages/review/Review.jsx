@@ -11,15 +11,15 @@ import { deleteAddress } from "../../features/address/helpers/deleteAddress";
 import { getCart } from "../../features/cart/helpers/getCart";
 import { generateRandomRating } from "../../util/generateRating";
 import "../../styles.css";
-import { getOrder } from "../../features/orders/helpers/getOrder";
 import { postOrder } from "../../features/orders/helpers/postOrder";
 
 const Review = () => {
   const { allAddress } = useSelector((store) => store.address);
   const { allCartProducts } = useSelector((store) => store.cart);
+  const {cartPrice}= useSelector(store => store.product)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(allAddress, "allAddress");
+  console.log(cartPrice, "cartPrice");
 
   const loadScript = async (url) => {
     return new Promise((resolve) => {
@@ -47,8 +47,8 @@ const Review = () => {
       return;
     }
     const options = {
-      key: "rzp_test_GtfIaWmsadE9fA",
-      amount: 1000,
+      key: "rzp_test_bZE9gTXzid6WZK",
+      amount: cartPrice*100,
       currency: "INR",
       name: "",
       description: "Thanks for shopping with us!",

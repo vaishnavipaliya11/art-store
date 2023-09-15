@@ -6,13 +6,14 @@ import "../../styles.css";
 import "./cart.css";
 import { calcultateCartPrice } from "../../util/calculateCartPrice";
 import CartCard from "../../components/cartCard/CartCard";
-import "../../styles.css"
+import "../../styles.css";
 import { useNavigate } from "react-router-dom";
+import { setCartPrice } from "../../features/product/productSlice";
 
 const Cart = () => {
   const { allCartProducts } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
-  const navigate= useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     try {
@@ -21,6 +22,11 @@ const Cart = () => {
       console.log(error);
     }
   }, []);
+
+  useEffect(() => {
+    const totalPrice = calcultateCartPrice(allCartProducts);
+    dispatch(setCartPrice(totalPrice));
+  }, [allCartProducts]);
   return (
     <div>
       <Navbar />
@@ -53,12 +59,20 @@ const Cart = () => {
             <div class="horizontal-line"></div>
 
             <p className="common-flex jst-sp-bet">
-              Total<span>  ₹ {calcultateCartPrice(allCartProducts)} </span>
+              Total<span> ₹ {calcultateCartPrice(allCartProducts)} </span>
             </p>
 
-            <button className="btn-primary" onClick={()=>navigate("/address")}>
-              Add address
-            </button>
+            <div className="common-flex jst-sp-bet">
+              <button
+                className="btn-primary"
+                onClick={() => navigate("/address")}
+              >
+                Add address
+              </button>
+              <button className="btn-secondary">
+                Go with the default Address
+              </button>
+            </div>
           </div>
         ) : (
           ""

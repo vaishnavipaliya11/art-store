@@ -38,8 +38,8 @@ const CartCard = ({data}) => {
           <p className="fs-xs">Quantity : {cartItem.quantity}</p>
           <button
             className="qty-btn"
-            onClick={() => {
-              dispatch(postCart(id));
+            onClick={async() => {
+            await  dispatch(postCart(id));
               dispatch(getCart());
             }}
           >
@@ -48,8 +48,8 @@ const CartCard = ({data}) => {
 
           <button
             className="qty-btn"
-            onClick={() => {
-              dispatch(deleteCart(id));
+            onClick={async () => {
+              await dispatch(deleteCart(id));
               dispatch(getCart());
             }}
           >

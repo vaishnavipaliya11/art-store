@@ -10,11 +10,11 @@ const Footer = () => {
   return (
     <div className="common-flex a-center jst-sp-bet  gap-sm">
       <div className="common-flex a-center jst-sp-bet  gap-sm">
-        <AiOutlineGithub className="fs-bg social-icon" />
-        <AiFillLinkedin className="fs-bg social-icon" />
-        <AiOutlineTwitter className="fs-bg social-icon" />
+        <AiOutlineGithub className="fs-bg social-icon text-primary" />
+        <AiFillLinkedin className="fs-bg social-icon text-primary" />
+        <AiOutlineTwitter className="fs-bg social-icon text-primary" />
       </div>
-      <p>© 2023 My store</p>
+      {/* <p>© 2023 My store</p> */}
     </div>
   );
 };

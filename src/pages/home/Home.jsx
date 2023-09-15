@@ -95,9 +95,9 @@ const Home = () => {
               return (
                 <div className="inspiration-set-one">
                   {img ? (
-                    <img src={img} alt={text} />
+                    <img src={img} alt={text} className="img-border" />
                   ) : (
-                    <video style={{ width: "20rem", height: "10rem" }} controls>
+                    <video style={{ width: "20rem", height: "10rem" }} className="img-border"controls>
                       <source src={video} type="video/mp4"></source>
                       Your browser does not support the video tag.
                     </video>
@@ -111,9 +111,9 @@ const Home = () => {
               return (
                 <div className="inspiration-set-one ">
                   {img ? (
-                    <img src={img} alt={text} />
+                    <img src={img} alt={text} className="img-border"/>
                   ) : (
-                    <video style={{ width: "20rem", height: "10rem" }} controls>
+                    <video style={{ width: "20rem", height: "10rem" }} className="img-border" controls>
                       <source src={video} type="video/mp4"></source>
                       Your browser does not support the video tag.
                     </video>
@@ -123,7 +123,7 @@ const Home = () => {
             })}
           </div>
 
-          <div className="common-flex a-center gap-xs">
+          {/* <div className="common-flex a-center gap-xs">
             <div className="common-flex gap-xs">
               <video style={{ width: "40%", height: "40%" }} controls>
                 <source
@@ -132,17 +132,26 @@ const Home = () => {
                 ></source>
                 Your browser does not support the video tag.
               </video>
-              <div className="three-layout-grid gap-xxs">
-                {multipleImgSet.map(({ img, text }) => {
-                  return (
-                    <div>
-                      <img src={img} alt={text} />
-                    </div>
-                  );
-                })}
+
+              <div className="common-col jst-sp-bet">
+                <p>
+                  Explore a world of unique treasures crafted by independent
+                  artisans and creators. From handmade jewelry to bespoke home
+                  decor, discover one-of-a-kind items that tell a story and
+                  capture the essence of creativity.
+                </p>
+                <div className="three-layout-grid gap-xxs">
+                  {multipleImgSet.map(({ img, text }) => {
+                    return (
+                      <div>
+                        <img src={img} alt={text} />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="common-col a-center gap-sm pd-med gradient-green">

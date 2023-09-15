@@ -32,10 +32,18 @@ export const posterImgOne = [
 ];
 
 export const multipleImgSet = [
-  { text: "", img: "https://i.etsystatic.com/41448540/c/1485/1485/0/315/il/58713d/4660641302/il_300x300.4660641302_4k2l.jpg" },
-  { text: "", img: "https://i.etsystatic.com/22700966/r/il/f1ae2f/4715011535/il_300x300.4715011535_d070.jpg" },
-  { text: "", img: "https://i.etsystatic.com/26474219/r/il/8bed31/3037799525/il_300x300.3037799525_8eca.jpg" },
-  { text: "", img: "https://i.etsystatic.com/22584408/c/799/799/27/1/il/d3f142/4333482315/il_300x300.4333482315_lv5e.jpg" },
+  {
+    text: "",
+    img: "https://i.etsystatic.com/22700966/r/il/f1ae2f/4715011535/il_300x300.4715011535_d070.jpg",
+  },
+  {
+    text: "",
+    img: "https://i.etsystatic.com/26474219/r/il/8bed31/3037799525/il_300x300.3037799525_8eca.jpg",
+  },
+  {
+    text: "",
+    img: "https://i.etsystatic.com/22584408/c/799/799/27/1/il/d3f142/4333482315/il_300x300.4333482315_lv5e.jpg",
+  },
 ];
 
 export const posterImgTwo = [
@@ -199,5 +207,43 @@ export const addAddressInput = [
     type: "text",
     name: "mobileNumber",
     placeholder: "Enter the mobileNumber",
+  },
+];
+
+export const categoriesArr = [
+  {
+    name: "Gift",
+    text: "gift",
+  },
+  {
+    name: "Jewelry",
+    text: "jwel",
+  },
+  {
+    name: "Decor",
+    text: "decor",
+  },
+  {
+    name: "Prints",
+    text: "prints",
+  },
+];
+
+export const signupForm = [
+  {
+    label: "Email",
+    type: "text",
+  },
+  {
+    label: "Username",
+    type: "text",
+  },
+  {
+    label: "Password",
+    type: "password",
+  },
+  {
+    label: "Confirm Password",
+    type: "password",
   },
 ];

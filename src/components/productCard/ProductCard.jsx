@@ -12,10 +12,12 @@ import { setEditedProductId } from "../../features/product/productSlice";
 import { postWishlist } from "../../features/wishlist/helpers/postWishlist";
 import { getWishlist } from "../../features/wishlist/helpers/getWishlist";
 import { deleteWishlist } from "../../features/wishlist/helpers/deleteWishlist";
+import { getProducts } from "../../features/product/helpers/getAllProduct";
 
 const ProductCard = ({ data }) => {
   const { isAdmin } = useSelector((store) => store.auth);
   const { allwishlistProducts } = useSelector((store) => store.wishlist);
+  const { allProducts } = useSelector((store) => store.product);
   const dispatch = useDispatch();
   const {
     title,
@@ -25,7 +27,7 @@ const ProductCard = ({ data }) => {
     description,
     highlights,
     userId,
-    id,
+    id,category,
     rating,
   } = data;
   const navigate = useNavigate();
@@ -34,12 +36,12 @@ const ProductCard = ({ data }) => {
     (product) => product.wishlistItem.productId
   );
 
-  const handleWishlistClick = (cardProdId) => {
+  const handleWishlistClick = async (cardProdId) => {
     if (productIdsInWishlist.includes(cardProdId)) {
-      dispatch(deleteWishlist(id));
+      await dispatch(deleteWishlist(id));
       dispatch(getWishlist());
     } else {
-      dispatch(postWishlist(id));
+      await dispatch(postWishlist(id));
       dispatch(getWishlist());
     }
   };
@@ -47,6 +49,7 @@ const ProductCard = ({ data }) => {
   useEffect(() => {
     dispatch(getWishlist());
   }, []);
+
   return (
     <div class="product-card">
       {/* <Link to={`/product/${id}`}> */}
@@ -89,7 +92,7 @@ const ProductCard = ({ data }) => {
       <div class="lower-card-info">
         <Link to={`/product/${id}`}>
           <h2 class="product-title mr-xs">{title}</h2>
-          <p class="mr-xs">{generateRandomRating(rating)}</p>
+          <p class="mr-xs">{category}<span>{generateRandomRating(rating)}</span></p>
           <p class="product-price">
             {price}{" "}
             <span className="fs-span text-gray">
@@ -102,16 +105,19 @@ const ProductCard = ({ data }) => {
           {isAdmin ? (
             <button
               class="btn-primary"
-              onClick={() => dispatch(deleteProduct(id))}
+              onClick={() => {
+                dispatch(deleteProduct(id));
+              }}
             >
               Delete{" "}
             </button>
           ) : (
             <button
               class="btn-primary"
-              onClick={() => {
-                dispatch(postCart(id));
-                // dispatch(getCart())
+              onClick={async () => {
+                const data = await dispatch(postCart(id));
+
+                dispatch(getCart());
               }}
             >
               Add to Cart

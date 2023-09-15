@@ -1,4 +1,5 @@
 export const calcultateCartPrice = (cartProducts) => {
+  
   let totalPrice = 0;
 
   cartProducts.forEach((product) => {
@@ -6,5 +7,6 @@ export const calcultateCartPrice = (cartProducts) => {
     const subtotal = price * cartItem.quantity;
     totalPrice += subtotal;
   });
+  
   return totalPrice
 };

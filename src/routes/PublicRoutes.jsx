@@ -10,6 +10,8 @@ import Cart from "../pages/cart/Cart";
 import Wishlist from "../pages/wishlist/Wishlist";
 import Address from "../pages/address/Address";
 import Review from "../pages/review/Review";
+import Order from "../pages/order/Order";
+import { Profile } from "../pages/profile/Profile";
 
 const PublicRoutes = () => {
   return (
@@ -28,6 +30,9 @@ const PublicRoutes = () => {
         <Route path="/wishlist" element={<Wishlist />}></Route>
         <Route path="/address" element={<Address />}></Route>
         <Route path="/review" element={<Review />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/order" element={<Order />}></Route>
+
       </Routes>
     </div>
   );

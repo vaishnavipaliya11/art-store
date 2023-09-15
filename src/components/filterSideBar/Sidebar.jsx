@@ -13,6 +13,7 @@ import {
   filterRatingTwoAbove,
 } from "../../features/product/productSlice";
 import { getProducts } from "../../features/product/helpers/getAllProduct";
+import { categoriesArr } from "../../constansts";
 const Sidebar = () => {
   const dispatch = useDispatch();
   const { filterProd, categories } = useSelector((store) => store.product);
@@ -66,58 +67,32 @@ const Sidebar = () => {
         <div>
           <h3 className="text-filter">Categories</h3>
           <div className="common-col">
-            <label>
-              <input
-                type="checkbox"
-                // value={filterProd}
-                onChange={() => {
-                  {
-                    categories.includes("gift")
-                      ? dispatch(
-                          addCategories(
-                            ""
-                            // categories.filter((data) => data !== "gift")
-                          )
-                        )
-                      : dispatch(addCategories([...categories, "gift"]));
-                  }
-                  dispatch(filterCategories("gift"));
-                }}
-              />{" "}
-              Gifts
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                onChange={() => {
-                  dispatch(filterCategories("jwel"));
-                }}
-              />{" "}
-              Jewelry
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                onChange={() => {
-                  dispatch(addCategories("Decor"));
-                  dispatch(filterCategories("Decor"));
-                }}
-              />{" "}
-              Decor
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                onChange={() => {
-                  dispatch(addCategories("prints"));
-                  dispatch(filterCategories("prints"));
-                }}
-              />{" "}
-              Prints
-            </label>
+            {categoriesArr.map(({ name, text }) => {
+              return (
+                <label>
+                  <input
+                    type="checkbox"
+                    // value={filterProd}
+                    onChange={async() => {
+                      {
+                        categories.includes(text)
+                          ? dispatch(
+                              addCategories(
+                                categories?.filter((data) => data !== text)
+                              )
+                            )
+                          : dispatch(addCategories([...categories, text]));
+                      }
+                     await dispatch(filterCategories(text));
+                    }}
+                  />{" "}
+                  {name}
+                </label>
+              );
+            })}
           </div>
         </div>
-        <div>
+        {/* <div>
           <h3 className="text-filter">Rating</h3>
           <div className="common-col">
             <label>
@@ -161,7 +136,7 @@ const Sidebar = () => {
               1 stars and above
             </label>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
