@@ -7,10 +7,6 @@ import {
   filterCategories,
   filterProdHighToLow,
   filterProdLowToHigh,
-  filterRatingFourAbove,
-  filterRatingOneAbove,
-  filterRatingThreeAbove,
-  filterRatingTwoAbove,
 } from "../../features/product/productSlice";
 import { getProducts } from "../../features/product/helpers/getAllProduct";
 import { categoriesArr } from "../../constansts";
@@ -73,7 +69,7 @@ const Sidebar = () => {
                   <input
                     type="checkbox"
                     // value={filterProd}
-                    onChange={async() => {
+                    onChange={async () => {
                       {
                         categories.includes(text)
                           ? dispatch(
@@ -83,7 +79,7 @@ const Sidebar = () => {
                             )
                           : dispatch(addCategories([...categories, text]));
                       }
-                     await dispatch(filterCategories(text));
+                      await dispatch(filterCategories(text));
                     }}
                   />{" "}
                   {name}
