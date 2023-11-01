@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import SideBar from "../../components/filterSideBar/SideBar";
+import { Sidebar } from "../../components/filterSideBar/SideBar";
 import ProductCard from "../../components/productCard/ProductCard";
 import { getProducts } from "../../features/product/helpers/getAllProduct";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,7 +36,7 @@ const AllProducts = () => {
     <div>
       <Navbar />
       <div className="all-prod-container">
-        <SideBar />
+        <Sidebar />
         <div className="common-flex wrap gap-xxs a-start">
           {productLoading ? <Loader /> : ""}
 

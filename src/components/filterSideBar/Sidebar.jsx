@@ -10,7 +10,7 @@ import {
 } from "../../features/product/productSlice";
 import { getProducts } from "../../features/product/helpers/getAllProduct";
 import { categoriesArr } from "../../constansts";
-const Sidebar = () => {
+export const Sidebar = () => {
   const dispatch = useDispatch();
   const { filterProd, categories } = useSelector((store) => store.product);
 
@@ -137,5 +137,3 @@ const Sidebar = () => {
     </div>
   );
 };
-
-export default Sidebar;
