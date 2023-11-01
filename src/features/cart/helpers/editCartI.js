@@ -1,6 +1,4 @@
-import { makeApiCall } from "../../../util/CommonApiCall";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { editCartParam } from "../cartCallParams.js/addToCartParam";
 import axios from "axios";
 
 export const editCart = createAsyncThunk(
