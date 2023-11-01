@@ -9,7 +9,7 @@ export const makeApiCall = async ({
 }) => {
   try {
     const instance = axios.create({
-      baseURL: "http://localhost:3000",
+      baseURL: "https://651d110444e393af2d591767.mockapi.io/",
       headers,
     });
 

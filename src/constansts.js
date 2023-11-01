@@ -74,19 +74,25 @@ export const posterImgTwo = [
 export const categorySet = [
   {
     name: "Jewelry",
+    apicat: "jwell",
     img: "https://i.etsystatic.com/37671807/r/il/e7e9fe/4482590499/il_300x300.4482590499_6buz.jpg",
   },
 
   {
     name: "Gifts",
+    apicat: "gift",
     img: "https://i.etsystatic.com/27643110/c/1600/1600/369/306/il/72fecb/4039768209/il_300x300.4039768209_8o67.jpg",
   },
   {
     name: "Digital Prints",
+    apicat: "prints",
+
     img: "https://i.etsystatic.com/31284698/c/1222/1222/182/0/il/d04470/5112644888/il_300x300.5112644888_er80.jpg",
   },
   {
     name: "Home Decor",
+    apicat: "decor",
+
     img: "https://i.etsystatic.com/22439879/c/1000/794/0/595/il/692950/4719403898/il_340x270.4719403898_ekpc.jpg",
   },
 ];
@@ -247,3 +253,28 @@ export const signupForm = [
     type: "password",
   },
 ];
+
+export const profileOptions = [
+  {
+    text: "Profile",
+    path: "/profile",
+  },
+  {
+    text: "Orders",
+    path: "/order",
+  },
+  {
+    text: "Address",
+    path: "/all-address",
+  },
+  {
+    text: "Settings",
+    path: "/setting",
+  },
+];
+
+export const getOrderUrl = "https://6527947d917d673fd76dd8f1.mockapi.io/order";
+
+export const getAddressUrl="https://6527947d917d673fd76dd8f1.mockapi.io/address"
+
+export const postOrderUrl="https://6527947d917d673fd76dd8f1.mockapi.io/order"

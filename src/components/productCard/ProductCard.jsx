@@ -20,14 +20,15 @@ const ProductCard = ({ data }) => {
   const { allProducts } = useSelector((store) => store.product);
   const dispatch = useDispatch();
   const {
-    title,
+    name,
     price,
-    imageUrl,
-    videoUrl,
+    avatar,
+
     description,
     highlights,
-    userId,
-    id,category,
+
+    id,
+    category,
     rating,
   } = data;
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ const ProductCard = ({ data }) => {
   };
 
   useEffect(() => {
-    dispatch(getWishlist());
+    // dispatch(getWishlist());
   }, []);
 
   return (
@@ -78,8 +79,14 @@ const ProductCard = ({ data }) => {
             )}
           </button>
         )}
-        {imageUrl ? (
-          <img src={imageUrl} alt="Product Image" class="product-image" />
+        {avatar ? (
+          <img
+            src={avatar}
+            alt="Product Image"
+            class="product-image"
+            height={236}
+            width={297}
+          />
         ) : (
           <video style={{ width: "10rem", height: "15rem" }} controls>
             <source src={videoUrl} type="video/mp4"></source>
@@ -91,8 +98,11 @@ const ProductCard = ({ data }) => {
       {/* </Link> */}
       <div class="lower-card-info">
         <Link to={`/product/${id}`}>
-          <h2 class="product-title mr-xs">{title}</h2>
-          <p class="mr-xs">{category}<span>{generateRandomRating(rating)}</span></p>
+          <h2 class="product-title mr-xs">{name}</h2>
+          <p class="mr-xs">
+            {category}
+            <span>{generateRandomRating(rating)}</span>
+          </p>
           <p class="product-price">
             {price}{" "}
             <span className="fs-span text-gray">
@@ -115,7 +125,7 @@ const ProductCard = ({ data }) => {
             <button
               class="btn-primary"
               onClick={async () => {
-                const data = await dispatch(postCart(id));
+                await dispatch(postCart(data));
 
                 dispatch(getCart());
               }}

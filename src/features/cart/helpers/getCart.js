@@ -7,7 +7,7 @@ export const getCart = createAsyncThunk("cart/all", async () => {
     const responseData = await makeApiCall(getCartParam());
 
     console.log(responseData, "getCart");
-    return responseData.products;
+    return responseData;
   } catch (error) {
     console.error("API Error:", error);
   }

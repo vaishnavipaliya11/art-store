@@ -9,9 +9,12 @@ import CartCard from "../../components/cartCard/CartCard";
 import "../../styles.css";
 import { useNavigate } from "react-router-dom";
 import { setCartPrice } from "../../features/product/productSlice";
+import Loader from "../../components/loader/Loader";
 
 const Cart = () => {
-  const { allCartProducts } = useSelector((store) => store.cart);
+  const { allCartProducts, cartLoading, qtyLoading } = useSelector(
+    (store) => store.cart
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -31,10 +34,14 @@ const Cart = () => {
     <div>
       <Navbar />
       <div className="cart-container">
+        <>
+          {cartLoading ? <Loader /> : ""}
+        </>
         <div>
           {allCartProducts.map((data) => {
             return <CartCard data={data} />;
           })}
+          {/* {qtyLoading ? <Loader /> : ""} */}
 
           <div className="common-col a-center j-center">
             {" "}
@@ -69,7 +76,7 @@ const Cart = () => {
               >
                 Add address
               </button>
-              <button className="btn-secondary">
+              <button className="btn-secondary" onClick={()=> navigate("/review")}>
                 Go with the default Address
               </button>
             </div>

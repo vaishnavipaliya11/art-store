@@ -1,5 +1,5 @@
 export const getAllProductsParam = {
-  url: "/admin/products",
+  url: "/products",
   method: "GET",
   headers: {
     Authorization: "Bearer yourAccessToken",

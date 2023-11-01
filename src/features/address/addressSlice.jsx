@@ -18,6 +18,7 @@ export const initialState = {
   singleAddress: {},
   selectedAddressId: "",
   isEditMode: false,
+  addressLoading:true
 };
 
 export const addressSlice = createSlice({
@@ -36,7 +37,7 @@ export const addressSlice = createSlice({
       };
     },
     setSelectedAddress: (state, action) => {
-      state.isEditMode = true;
+      state.isEditMode = !state.isEditMode;
       state.selectedAddressId = action.payload;
     },
     setEditAddress: (state, action) => {
@@ -47,14 +48,14 @@ export const addressSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAddress.pending, (state) => {
-        state.loading = true;
+        state.addressLoading = true;
       })
       .addCase(getAddress.fulfilled, (state, { payload }) => {
         state.allAddress = payload;
-        state.loading = false;
+        state.addressLoading = false;
       })
       .addCase(getAddress.rejected, (state) => {
-        state.loading = false;
+        state.addressLoading = false;
       });
     builder
       .addCase(postAddress.pending, (state) => {

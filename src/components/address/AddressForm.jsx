@@ -15,8 +15,8 @@ const AddressForm = () => {
   const dispatch = useDispatch();
   const { addressDetailsInput, selectedAddressId, singleAddress, isEditMode } =
     useSelector((store) => store.address);
-  const navigate= useNavigate()
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(getSingleAddress(selectedAddressId));
   }, []);
@@ -25,18 +25,19 @@ const AddressForm = () => {
     dispatch(setEditAddress(singleAddress));
   }, [singleAddress]);
 
-  const handleAddressClick = () => {
+  const handleAddressClick = async() => {
     if (isEditMode) {
       console.log("addressDetailsInput", addressDetailsInput);
 
       dispatch(
         updateAddress({ id: singleAddress.id, payload: addressDetailsInput })
       );
-      dispatch(getAddress());
     } else {
-      dispatch(postAddress(addressDetailsInput));
-      dispatch(getAddress());
+      console.log("add address");
+      await dispatch(postAddress(addressDetailsInput));
     }
+    dispatch(getAddress());
+
   };
 
   return (
@@ -54,12 +55,6 @@ const AddressForm = () => {
               name={name}
               value={addressDetailsInput[name]}
               onChange={(e) => {
-                console.log(
-                  e.target.name,
-                  "e.target.name",
-                  e.target.value,
-                  "e.target.value"
-                );
                 dispatch(
                   setAddressInput({
                     name: e.target.name,
@@ -75,7 +70,7 @@ const AddressForm = () => {
         className="btn-primary"
         onClick={() => {
           handleAddressClick();
-          navigate("/review")
+          navigate("/review");
         }}
       >
         {isEditMode ? "Edit Address" : "Save Address"}

@@ -7,7 +7,7 @@ export const deleteCart = createAsyncThunk("cart/delete", async (id) => {
     const responseData = await makeApiCall(deleteCartParam(id));
 
     console.log(responseData, "getCart");
-    return responseData.products;
+    return responseData;
   } catch (error) {
     console.error("API Error:", error);
   }

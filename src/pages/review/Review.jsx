@@ -12,14 +12,15 @@ import { getCart } from "../../features/cart/helpers/getCart";
 import { generateRandomRating } from "../../util/generateRating";
 import "../../styles.css";
 import { postOrder } from "../../features/orders/helpers/postOrder";
+import Loader from "../../components/loader/Loader";
 
 const Review = () => {
-  const { allAddress } = useSelector((store) => store.address);
+  const { allAddress, addressLoading } = useSelector((store) => store.address);
   const { allCartProducts } = useSelector((store) => store.cart);
-  const {cartPrice}= useSelector(store => store.product)
+  const { cartPrice } = useSelector((store) => store.product);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(cartPrice, "cartPrice");
+  console.log(allCartProducts, "allCartProducts");
 
   const loadScript = async (url) => {
     return new Promise((resolve) => {
@@ -48,15 +49,15 @@ const Review = () => {
     }
     const options = {
       key: "rzp_test_bZE9gTXzid6WZK",
-      amount: cartPrice*100,
+      amount: cartPrice * 100,
       currency: "INR",
       name: "",
       description: "Thanks for shopping with us!",
       image: "/favicon.ico",
       handler: function (response) {
         const paymentId = response.razorpay_payment_id;
-        dispatch(postOrder());
-        navigate("/products")
+        dispatch(postOrder(allCartProducts));
+        navigate("/order")
       },
 
       prefill: {
@@ -78,6 +79,7 @@ const Review = () => {
   return (
     <div>
       <Navbar />
+      {addressLoading ? <Loader /> : ""}
       <div className="common-flex a-center j-center mr-sm-btm">
         <div className="common-col  js-evenly mr-sm-btm gap-sm">
           <div className="common-flex js-evenly ">
@@ -129,8 +131,8 @@ const Review = () => {
 
                         <button
                           className="btn-secondary"
-                          onClick={() => {
-                            dispatch(deleteAddress(id));
+                          onClick={async () => {
+                            await dispatch(deleteAddress(id));
                             dispatch(getAddress());
                           }}
                         >
@@ -144,15 +146,15 @@ const Review = () => {
             </div>
             <div className="three-layout-grid">
               {allCartProducts.map(
-                ({ title, imageUrl, videoUrl, price, rating, id }) => {
+                ({ name, avatar, videoUrl, price, rating, id }) => {
                   return (
                     <div>
                       <div class="product-card">
                         {/* <Link to={`/product/${id}`}> */}
                         <div class="image-container">
-                          {imageUrl ? (
+                          {avatar ? (
                             <img
-                              src={imageUrl}
+                              src={avatar}
                               alt="Product Image"
                               class="product"
                             />
@@ -170,7 +172,7 @@ const Review = () => {
                         {/* </Link> */}
                         <div class="lower-card-info">
                           <Link to={`/product/${id}`}>
-                            <h2 class="product-title mr-xs">{title}</h2>
+                            <h2 class="product-title mr-xs">{name}</h2>
                             <p class="mr-xs">{generateRandomRating(rating)}</p>
                             <p class="product-price">{price} </p>
                           </Link>

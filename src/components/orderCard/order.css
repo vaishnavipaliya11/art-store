@@ -1,0 +1,8 @@
+.order-img{
+    width: 10rem;
+    height: 8rem;
+}
+.order-layout{
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+}

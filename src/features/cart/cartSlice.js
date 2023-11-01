@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getCart } from "./helpers/getCart";
 import { postCart } from "./helpers/postCart";
+import { decreaseCartQty, editCart } from "./helpers/editCartI";
 
 export const initialState = {
   allCartProducts: [],
-
-  loading: true,
+  cartLoading: true,
+  qtyLoading:false
 };
 
 export const cartSlice = createSlice({
@@ -16,14 +17,14 @@ export const cartSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getCart.pending, (state) => {
-        state.loading = true;
+        state.cartLoading = true;
       })
       .addCase(getCart.fulfilled, (state, { payload }) => {
         state.allCartProducts = payload;
-        state.loading = false;
+        state.cartLoading = false;
       })
       .addCase(getCart.rejected, (state) => {
-        state.loading = false;
+        state.cartLoading = false;
       });
       builder
       .addCase(postCart.pending, (state) => {
@@ -36,17 +37,26 @@ export const cartSlice = createSlice({
       .addCase(postCart.rejected, (state) => {
         state.loading = false;
       });
-    //   builder
-    //   .addCase(deleteProduct.pending, (state) => {
-    //     state.loading = true;
-    //   })
-    //   .addCase(deleteProduct.fulfilled, (state, { payload }) => {
-    //     state.allProducts = payload;
-    //     state.loading = false;
-    //   })
-    //   .addCase(deleteProduct.rejected, (state) => {
-    //     state.loading = false;
-    //   });
+      builder
+      .addCase(editCart.pending, (state) => {
+        state.qtyLoading = true;
+      })
+      .addCase(editCart.fulfilled, (state, { payload }) => {
+        state.qtyLoading = false;
+      })
+      .addCase(editCart.rejected, (state) => {
+        state.qtyLoading = false;
+      });
+      builder
+      .addCase(decreaseCartQty.pending, (state) => {
+        state.qtyLoading = true;
+      })
+      .addCase(decreaseCartQty.fulfilled, (state, { payload }) => {
+        state.qtyLoading = false;
+      })
+      .addCase(decreaseCartQty.rejected, (state) => {
+        state.qtyLoading = false;
+      });
   },
 });
 export default cartSlice.reducer;

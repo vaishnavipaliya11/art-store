@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getOrder } from "./helpers/getOrder";
 
 export const initialState = {
   allOrders: [],
+  orderLoading: true,
 };
 
 export const orderSlice = createSlice({
@@ -10,18 +12,18 @@ export const orderSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
-    // builder
-    //   .addCase(getAddress.pending, (state) => {
-    //     state.loading = true;
-    //   })
-    //   .addCase(getAddress.fulfilled, (state, { payload }) => {
-    //     console.log(payload, "payload");
-    //     state.allAddress = payload;
-    //     state.loading = false;
-    //   })
-    //   .addCase(getAddress.rejected, (state) => {
-    //     state.loading = false;
-    //   });
+    builder
+      .addCase(getOrder.pending, (state) => {
+        state.orderLoading = true;
+      })
+      .addCase(getOrder.fulfilled, (state, { payload }) => {
+        console.log(payload, "payload");
+        state.allOrders = payload;
+        state.orderLoading = false;
+      })
+      .addCase(getOrder.rejected, (state) => {
+        state.orderLoading = false;
+      });
     // builder
     //   .addCase(postAddress.pending, (state) => {
     //     state.loading = true;

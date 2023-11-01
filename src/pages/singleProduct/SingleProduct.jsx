@@ -12,15 +12,16 @@ import { MdOutlineBusiness } from "react-icons/md";
 import ReadMoreText from "../../components/readMoreText/ReadMoreText";
 import { postCart } from "../../features/cart/helpers/postCart";
 import { generateRandomRating } from "../../util/generateRating";
+import Loader from "../../components/loader/Loader";
 const SingleProduct = () => {
   const { product_id } = useParams();
   const dispatch = useDispatch();
-  const { singleProd } = useSelector((store) => store.product);
+  const { singleProd ,singleProdLoading} = useSelector((store) => store.product);
   console.log(singleProd, "singleProd");
 
   const {
-    title,
-    imageUrl,
+    name,
+    avatar,
     description,
     highlights,
     category,
@@ -43,16 +44,17 @@ const SingleProduct = () => {
       <Navbar />
 
       <div class="single-prod-container">
+      {singleProdLoading ? <Loader /> : ""}
         <div class="image-container mr-sm-btm">
-          {imageUrl ? (
-            <img src={imageUrl} alt={title} className="img-border " />
+          {avatar ? (
+            <img src={avatar} alt={name} className="img-border " />
           ) : (
             <video src={videoUrl} controls></video>
           )}
         </div>
         <div class="product-details common-col gap-xs  mr-sm-btm">
           <div>
-            <p class="title fs-med">{title}</p>
+            <p class="title fs-med">{name}</p>
             <p class="title">{generateRandomRating()}</p>
           </div>
           <div>

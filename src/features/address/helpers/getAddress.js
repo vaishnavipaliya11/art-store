@@ -1,14 +1,23 @@
-import { makeApiCall } from "../../../util/CommonApiCall";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getAddressParam } from "../addressParams/addressParams";
+import { getAddressUrl } from "../../../constansts";
+import axios from "axios";
 
-export const getAddress = createAsyncThunk("address/get", async (payload) => {
+export const getAddress = createAsyncThunk("address/get", async () => {
   try {
-    const responseData = await makeApiCall(getAddressParam(payload));
-
-    console.log(responseData, "getAddress");
-    return responseData;
+    const response = await axios.get(getAddressUrl);
+    console.log(response, "response");
+    if (response.status === 200) {
+      const address = response?.data;
+      return address;
+    } else {
+      console.error(
+        "Failed to retrieve orders. Status Code: ",
+        response.status
+      );
+      return null;
+    }
   } catch (error) {
-    console.error("API Error:", error);
+    console.error("Error while fetching orders: ", error.message);
+    return null;
   }
 });

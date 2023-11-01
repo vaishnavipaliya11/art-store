@@ -16,7 +16,7 @@ const Navbar = () => {
 
   useEffect(() => {
     try {
-      dispatch(getCart());
+      // dispatch(getCart());
     } catch (error) {
       console.log(err);
     }

@@ -262,18 +262,14 @@
   min-width: 60%;
 }
 
-Hide the scrollbar in webkit-based browsers
-::-webkit-scrollbar {
-  width: 0.1rem; /* Width of the vertical scrollbar */
-  height: 0.1rem; /* Height of the horizontal scrollbar */
+.box-shadow{
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
-/* Hide scrollbar track */
-::-webkit-scrollbar-track {
-  background: transparent; /* Hide the scrollbar track */
-}
-
-/* Hide scrollbar thumb */
-::-webkit-scrollbar-thumb {
-  background: transparent; /* Hide the scrollbar thumb */
+.loader-img{
+  top: 50%;
+  left: 50%;
+  z-index: 99;
+  position: absolute;
+  transform: translate(-50%, -50%);
 }

@@ -4,15 +4,22 @@ import { getCart } from "../../features/cart/helpers/getCart";
 import { postCart } from "../../features/cart/helpers/postCart";
 import { useDispatch } from "react-redux";
 import { generateRandomText } from "../../util/generateRadomText";
+import { decreaseCartQty, editCart } from "../../features/cart/helpers/editCartI";
 
-const CartCard = ({data}) => {
-    const dispatch = useDispatch();
-    const { title, imageUrl, videoUrl, price, cartItem, id }= data
+const CartCard = ({ data }) => {
+  const dispatch = useDispatch();
+  const { name, avatar, videoUrl, price, cartQty, id } = data;
+
+  const updateQty = () => {
+     dispatch(editCart({id:id,payload:data}));
+     dispatch(getCart());
+  };
+  
   return (
     <div className="cart-card-container">
       <div className="common-col gap-xs ">
-        {imageUrl ? (
-          <img className="img-border" src={imageUrl} />
+        {avatar ? (
+          <img className="img-border" src={avatar} />
         ) : (
           <video style={{ width: "20rem", height: "10rem" }} controls>
             <source src={videoUrl} type="video/mp4"></source>
@@ -22,8 +29,8 @@ const CartCard = ({data}) => {
         <div className="common-flex gap-xs ">
           <button
             className="btn-remove-secondary"
-            onClick={() => {
-              dispatch(deleteCart(id));
+            onClick={async () => {
+              await dispatch(deleteCart(id));
               dispatch(getCart());
             }}
           >
@@ -33,23 +40,23 @@ const CartCard = ({data}) => {
         </div>
       </div>
       <div className=" mr-sm-top">
-        <h3 className="fs-sm">{title}</h3>
+        <h3 className="fs-sm">{name}</h3>
         <div>
-          <p className="fs-xs">Quantity : {cartItem.quantity}</p>
-          <button
-            className="qty-btn"
-            onClick={async() => {
-            await  dispatch(postCart(id));
-              dispatch(getCart());
-            }}
-          >
+          <p className="fs-xs">Quantity : {cartQty}</p>
+          <button className="qty-btn" onClick={updateQty}>
             +
           </button>
 
           <button
             className="qty-btn"
             onClick={async () => {
-              await dispatch(deleteCart(id));
+              if (cartQty > 1) {
+                await dispatch(
+                  decreaseCartQty({id:id,payload: data})
+                );
+              } else {
+                await dispatch(deleteCart(id));
+              }
               dispatch(getCart());
             }}
           >

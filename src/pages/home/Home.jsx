@@ -19,21 +19,29 @@ import {
   multipleImgSet,
 } from "../../constansts";
 import Footer from "../../components/footer/Footer";
+import { useDispatch } from "react-redux";
+import { getCategoryProd } from "../../features/product/helpers/getCategoryProd";
 
 const Home = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   return (
     <div className="main-container">
       <Navbar />
       <div className="common-col gap-sm">
         <p style={{ textAlign: "center" }}>{homeTag}</p>
         <div className="category-container common-flex a-center  j-center ">
-          {categorySet.map(({ name, img }) => {
+          {categorySet.map(({ name, img, apicat }) => {
             return (
               <div className="">
                 {
-                  <div className="common-col a-center j-center cat-gap">
+                  <div
+                    className="common-col a-center j-center cat-gap"
+                    onClick={() => {
+                      dispatch(getCategoryProd(apicat));
+                      navigate("/products");
+                    }}
+                  >
                     <img className="img-br-half cat-img" src={img} alt={name} />
                     <p className="cat-fs">{name}</p>
                   </div>
@@ -97,7 +105,11 @@ const Home = () => {
                   {img ? (
                     <img src={img} alt={text} className="img-border" />
                   ) : (
-                    <video style={{ width: "20rem", height: "10rem" }} className="img-border"controls>
+                    <video
+                      style={{ width: "20rem", height: "10rem" }}
+                      className="img-border"
+                      controls
+                    >
                       <source src={video} type="video/mp4"></source>
                       Your browser does not support the video tag.
                     </video>
@@ -111,9 +123,13 @@ const Home = () => {
               return (
                 <div className="inspiration-set-one ">
                   {img ? (
-                    <img src={img} alt={text} className="img-border"/>
+                    <img src={img} alt={text} className="img-border" />
                   ) : (
-                    <video style={{ width: "20rem", height: "10rem" }} className="img-border" controls>
+                    <video
+                      style={{ width: "20rem", height: "10rem" }}
+                      className="img-border"
+                      controls
+                    >
                       <source src={video} type="video/mp4"></source>
                       Your browser does not support the video tag.
                     </video>

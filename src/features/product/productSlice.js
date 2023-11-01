@@ -7,7 +7,9 @@ import { getCategoryProd } from "./helpers/getCategoryProd";
 export const initialState = {
   allProducts: [],
   singleProd: {},
-  loading: true,
+  productLoading: true,
+  singleProdLoading:true,
+  deleteProductLoading:false,
   editedProductId: "",
   isEditProduct: false,
   categories: [],
@@ -112,36 +114,36 @@ export const productSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getProducts.pending, (state) => {
-        state.loading = true;
+        state.productLoading = true;
       })
       .addCase(getProducts.fulfilled, (state, { payload }) => {
         state.allProducts = payload;
-        state.loading = false;
+        state.productLoading = false;
       })
       .addCase(getProducts.rejected, (state) => {
-        state.loading = false;
+        state.productLoading = false;
       });
     builder
       .addCase(getSingleProduct.pending, (state) => {
-        state.loading = true;
+        state.singleProdLoading = true;
       })
       .addCase(getSingleProduct.fulfilled, (state, { payload }) => {
         state.singleProd = payload;
-        state.loading = false;
+        state.singleProdLoading = false;
       })
       .addCase(getSingleProduct.rejected, (state) => {
-        state.loading = false;
+        state.singleProdLoading = false;
       });
     builder
       .addCase(deleteProduct.pending, (state) => {
-        state.loading = true;
+        state.deleteProductLoading = true;
       })
       .addCase(deleteProduct.fulfilled, (state, { payload }) => {
         state.allProducts = payload;
-        state.loading = false;
+        state.deleteProductLoading = false;
       })
       .addCase(deleteProduct.rejected, (state) => {
-        state.loading = false;
+        state.deleteProductLoading = false;
       });
     builder
       .addCase(getCategoryProd.pending, (state) => {

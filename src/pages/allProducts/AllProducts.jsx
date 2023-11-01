@@ -6,19 +6,19 @@ import { getProducts } from "../../features/product/helpers/getAllProduct";
 import { useDispatch, useSelector } from "react-redux";
 import "../../styles.css";
 import {
-  
   filterProdLowToHigh,
   setEditedProductIdNull,
   setSingleProdNull,
 } from "../../features/product/productSlice";
+import Loader from "../../components/loader/Loader";
 
 const AllProducts = () => {
   // Define the API call parameters in an object
   const dispatch = useDispatch();
-  const { allProducts, editedProductId } = useSelector(
+  const { allProducts, editedProductId, productLoading } = useSelector(
     (store) => store.product
   );
-
+  console.log(allProducts, "allProducts");
   useEffect(() => {
     try {
       dispatch(getProducts());
@@ -31,47 +31,15 @@ const AllProducts = () => {
     dispatch(setEditedProductIdNull(editedProductId));
     dispatch(setSingleProdNull());
   }, []);
-  // Your product data
-  // const products = [
-  //   // ... (your product data here)
-  // ];
 
-  // Function to filter products by category or multiple categories
-  // function filterProductsByCategory(products, categories) {
-  //   // Check if 'categories' is an array or a single category
-  //   if (Array.isArray(categories)) {
-  //       // Filter products matching any of the specified categories
-  //       return products.filter(product => categories.includes(product.category));
-  //   } else {
-  //       // Filter products matching the single specified category
-  //       return products.filter(product => product.category === categories);
-  //   }
-  // }
-
-  // Example usage:
-
-  // Filter products with a single category
-  // const singleCategory = "jwel";
-  // const singleCategoryProducts = filterProductsByCategory(allProducts, singleCategory);
-
-  // console.log("Products in single category:", singleCategoryProducts);
-
-  // Filter products with multiple categories (an array)
-  // const multipleCategories = ["jwel", "decor"];
-  // const multiCategoryProducts = filterProductsByCategory(allProducts, multipleCategories);
-
-  // console.log("Products in multiple categories:", multiCategoryProducts);
-
-  // Now, 'productsByCategory' contains products grouped by category with a rating of 3 or above
-  console.log(allProducts);
-
-  
   return (
     <div>
       <Navbar />
       <div className="all-prod-container">
         <SideBar />
-        <div className="common-flex wrap gap-m a-start">
+        <div className="common-flex wrap gap-xxs a-start">
+          {productLoading ? <Loader /> : ""}
+
           {allProducts?.map((data) => {
             return <ProductCard data={data} />;
           })}

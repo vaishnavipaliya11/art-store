@@ -12,6 +12,8 @@ import Address from "../pages/address/Address";
 import Review from "../pages/review/Review";
 import Order from "../pages/order/Order";
 import { Profile } from "../pages/profile/Profile";
+import { AllAddress } from "../pages/address/AllAddress";
+import { Setting } from "../pages/setting/setting";
 
 const PublicRoutes = () => {
   return (
@@ -29,6 +31,9 @@ const PublicRoutes = () => {
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/wishlist" element={<Wishlist />}></Route>
         <Route path="/address" element={<Address />}></Route>
+        <Route path="/all-address" element={<AllAddress />}></Route>
+        <Route path="/setting" element={<Setting />}></Route>
+
         <Route path="/review" element={<Review />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/order" element={<Order />}></Route>
