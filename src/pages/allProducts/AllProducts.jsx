@@ -9,7 +9,7 @@ import {
   setSingleProdNull,
 } from "../../features/product/productSlice";
 import Loader from "../../components/loader/Loader";
-import SideBar from "../../components/filterSideBar/SideBar";
+import SideBar from "../../components/sidebar/SideBar";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const AllProducts = () => {
     <div>
       <Navbar />
       <div className="all-prod-container">
-        <SideBar />
+        <SideBar/>
         <div className="common-flex wrap gap-xxs a-start">
           {productLoading ? <Loader /> : ""}
 
