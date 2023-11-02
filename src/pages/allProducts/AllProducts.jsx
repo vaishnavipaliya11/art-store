@@ -16,7 +16,6 @@ const AllProducts = () => {
   const { allProducts, editedProductId, productLoading } = useSelector(
     (store) => store.product
   );
-  console.log(allProducts, "allProducts");
   useEffect(() => {
     try {
       dispatch(getProducts());
