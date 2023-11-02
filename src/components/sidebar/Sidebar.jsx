@@ -17,7 +17,6 @@ import { categoriesArr } from "../../constansts";
   const handleSortClick = () => {
     dispatch(filterProdLowToHigh());
   };
-  console.log(categories, "action.payload");
   return (
     <div>
       <div className="common-flex jst-sp-bet">
