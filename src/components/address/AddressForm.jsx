@@ -41,7 +41,7 @@ const AddressForm = () => {
   };
 
   return (
-    <div className="common-col gap-xsm address-form-width">
+    <div className="common-col gap-xxs address-form-width">
       <h3 className="fs-xbg">Enter your delivery address </h3>
       {addAddressInput?.map(({ title, type, name, placeholder }) => {
         return (
@@ -51,7 +51,7 @@ const AddressForm = () => {
               required={true}
               placeholder={placeholder}
               type={type}
-              className="address-input"
+              className="address-input myInput"
               name={name}
               value={addressDetailsInput[name]}
               onChange={(e) => {

@@ -3,6 +3,7 @@ import { getProducts } from "./helpers/getAllProduct";
 import { getSingleProduct } from "./helpers/getSingleProduct";
 import { deleteProduct } from "./helpers/deleteProduct";
 import { getCategoryProd } from "./helpers/getCategoryProd";
+import toast from "react-hot-toast";
 
 export const initialState = {
   allProducts: [],
@@ -76,31 +77,14 @@ export const productSlice = createSlice({
       );
     },
     addCategories: (state, action) => {
-      console.log(action.payload, "action.payload");
+      console.log(action.payload, "addCategories");
       return {
         ...state,
         categories: action.payload,
       };
     },
     filterCategories: (state, action) => {
-      console.log("called");
-
-      // Create a copy of all products
-      let allfilteredProducts = [...state.allProducts];
-
-      if (state.categories.length > 0) {
-        // Filter the products based on selected categories
-        const filteredProducts = allfilteredProducts.filter((prod) =>
-          state.categories.includes(prod.category)
-        );
-
-        // Update the state with the filtered products
-        state.allProducts = filteredProducts;
-        console.log(state.allProducts, "filteredProducts");
-      }
-
-      // Return a new state object with the filtered products
-      return state.allProducts;
+     
     },
 
     clearFilter: (state) => {

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAddress } from "../../features/address/helpers/getAddress";
 import { AiFillEdit, AiTwotoneDelete } from "react-icons/ai";
-
+import "./address.css"
 export const AllAddress = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -34,44 +34,54 @@ export const AllAddress = () => {
                 );
               })}
             </div>
-            <div className="common-col gap-sm a-center ">
-              {allAddress?.map(({fullName,street,city,postalCode,mobileNumber,country,state}) => {
-                return (
-                  <div className=" address-block img-border">
-                    <div>
-                      <p>{fullName}</p>
-                      <p>{street}</p>
-                      <p>
-                        {city} <span>{postalCode}</span>
-                      </p>
-                      <p>{state}</p>
-                      <p>{country}</p>
-                      <p>{mobileNumber}</p>
-                    </div>
-                    <div className="common-flex a-start gap-xs">
-                      <button
-                        className="btn-primary"
-                        onClick={() => {
-                          //   navigate("/address");
-                          //   dispatch(setSelectedAddress(id));
-                        }}
-                      >
-                        <AiFillEdit />
-                      </button>
+            <div className="four-layout-grid  a-start gap-xxs">
+              {allAddress?.map(
+                ({
+                  fullName,
+                  street,
+                  city,
+                  postalCode,
+                  mobileNumber,
+                  country,
+                  state,
+                }) => {
+                  return (
+                    <div className=" address-block img-border">
+                      <div>
+                        <p className="mar-top">{fullName}</p>
+                        <p className="mar-zer">{street}</p>
+                        <p className="mar-zer">
+                          {city} <span>{postalCode}</span>
+                        </p>
+                        <p className="mar-zer">{state}</p>
+                        <p className="mar-zer">{country}</p>
+                        <p>{mobileNumber}</p>
+                      </div>
+                      <div className="common-flex a-start gap-xs">
+                        <button
+                          className="btn-primary"
+                          onClick={() => {
+                            navigate("/address");
+                            dispatch(setSelectedAddress(id));
+                          }}
+                        >
+                          <AiFillEdit />
+                        </button>
 
-                      <button
-                        className="btn-secondary"
-                        onClick={() => {
-                          //   dispatch(deleteAddress(id));
-                          //   dispatch(getAddress());
-                        }}
-                      >
-                        <AiTwotoneDelete />
-                      </button>
+                        <button
+                          className="btn-secondary"
+                          onClick={() => {
+                            //   dispatch(deleteAddress(id));
+                            //   dispatch(getAddress());
+                          }}
+                        >
+                          <AiTwotoneDelete />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                }
+              )}
             </div>
           </div>
         </div>

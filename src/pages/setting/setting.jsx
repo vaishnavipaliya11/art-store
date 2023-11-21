@@ -4,7 +4,7 @@ import Navbar from "../../components/navbar/Navbar";
 import "../../styles.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoggedUser } from "../../features/auth/authSlice";
+import { logOutUser, setLoggedUser } from "../../features/auth/authSlice";
 
 export const Setting = () => {
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ export const Setting = () => {
             <div className="common-col  ">
               <p>Account Setting</p>
               <button className="btn-secondary" onClick={() => {
-                dispatch(setLoggedUser(isLoggedIn))
+                dispatch(logOutUser(isLoggedIn))
                 navigate("/products")
               }}>Logout</button>
             </div>

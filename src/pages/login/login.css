@@ -1,17 +1,7 @@
 .login-container {
   height: 50vh;
 }
-.myInput {
-  border: 1px solid var(--secondary-clr); /* Add a blue outline */
-  padding: 5px; /* Add some padding for spacing */
-  border-radius: 5px; /* Round the corners of the input */
-}
-.myInput:focus {
-  outline: 1px solid #9ca3af;
-}
-.box-shd {
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-}
+
 .width-min{
     min-width: 40%;
 }

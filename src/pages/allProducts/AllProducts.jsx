@@ -10,12 +10,19 @@ import {
 } from "../../features/product/productSlice";
 import Loader from "../../components/loader/Loader";
 import Sidenav from "../../components/sidenav/Sidenav";
+import { all } from "axios";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
-  const { allProducts, editedProductId, productLoading } = useSelector(
-    (store) => store.product
-  );
+
+  const { allProducts, editedProductId, productLoading, categories } =
+    useSelector((store) => store.product);
+
+  const filterProd =
+    categories?.length > 0
+      ? allProducts.filter((prod) => categories.includes(prod.category))
+      : allProducts;
+
   useEffect(() => {
     try {
       dispatch(getProducts());
@@ -32,16 +39,18 @@ const AllProducts = () => {
   return (
     <div>
       <Navbar />
-      <div className="all-prod-container">
-        <Sidenav/>
-        <div className="common-flex wrap gap-xxs a-start">
-          {productLoading ? <Loader /> : ""}
-
-          {allProducts?.map((data) => {
-            return <ProductCard data={data} />;
-          })}
+      {productLoading ? (
+        <Loader />
+      ) : (
+        <div className="all-prod-container">
+          <Sidenav />
+          <div className="five-grid-layout gap-xs a-start">
+            {filterProd?.map((data) => {
+              return <ProductCard data={data} />;
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

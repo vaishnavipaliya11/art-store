@@ -63,7 +63,6 @@
   border-radius: 50%;
 }
 .nav-container {
-  padding: 1rem 0;
   align-items: center;
   position: sticky;
   top: 0;
@@ -150,11 +149,15 @@
 .text-filter{
   color: #9ca3af;
   font-weight: 600;
+  margin: 0 7px;
 }
 .font-sm{
   font-size: 14px;
 }
 
+.pointer{
+  cursor: pointer;
+}
 .btn-primary {
   background-color: var(--primary-clr);
   color: whitesmoke;
@@ -178,6 +181,10 @@
   border-radius: 5px;
   padding: 5px 8px;
   border: 2px solid var(--primary-clr);
+}
+.btn-secondary:focus{
+  outline: 4px auto var(--secondary);
+  border: 1px solid var(--secondary);
 }
 .btn-secondary:hover {
   cursor: pointer;
@@ -226,6 +233,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+.five-grid-layout{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+}
 
 .all-prod-container {
   display: grid;
@@ -272,4 +283,36 @@
   z-index: 99;
   position: absolute;
   transform: translate(-50%, -50%);
+}
+
+
+.cart-img{
+  max-width: 12rem;
+  object-fit: contain;
+}
+.myInput {
+  border: 1px solid var(--secondary-clr); /* Add a blue outline */
+  padding: 5px; /* Add some padding for spacing */
+  border-radius: 5px; /* Round the corners of the input */
+}
+.myInput:focus {
+  outline: 1px solid #9ca3af;
+}
+.box-shd {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.mr-zero{
+  margin: 0;
+}
+.cr-pointer{
+  cursor: pointer;
+}
+
+.cart-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
 }

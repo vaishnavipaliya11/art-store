@@ -1,6 +1,5 @@
 export const homeTag =
   " Explore Unique Creations: Uncover Artistry from Independent Makers";
-
 export const posterTagOne =
   "Unearth exceptional creations by independent artists";
 export const posterTagTwo = "Experience the world of independent craftsmanship";
@@ -159,12 +158,14 @@ export const projectDetails = [
       "A heaven where creativity knows no bounds. At our platform, artisans from around the world converge to showcase, sell, and celebrate their unique creations. ",
   },
   {
-    heading: "Empowering Artisans",
+    heading: "Empowering Artisans",  
+    img:"",
     description:
       "We're not just another faceless warehouse.We're here to simplify the journey, connecting you directly with these talented makers, enabling you to discover artistic treasures that resonate with your spirit.",
   },
   {
     heading: "Prioritizing Your Peace",
+    img:"",
     description:
       " Our dedicated team places your security above all else. Rest assured that when you engage with our platform, you're stepping into a space designed to protect and uplift your experience.",
   },
@@ -223,15 +224,15 @@ export const categoriesArr = [
   },
   {
     name: "Jewelry",
-    text: "jwel",
+    text: "jwell",
   },
   {
     name: "Decor",
     text: "decor",
   },
   {
-    name: "Prints",
-    text: "prints",
+    name: "Wall",
+    text: "wall",
   },
 ];
 

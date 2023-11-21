@@ -21,6 +21,9 @@
     text-align: center;
     margin: 0.2rem;
 }
+.qty-btn:focus{
+  border: 1px solid var(--secondary);
+}
 
 .text-br-clr{
     color: var(--brown-clr);

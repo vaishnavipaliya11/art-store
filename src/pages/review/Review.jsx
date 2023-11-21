@@ -18,6 +18,7 @@ const Review = () => {
   const { allAddress, addressLoading } = useSelector((store) => store.address);
   const { allCartProducts } = useSelector((store) => store.cart);
   const { cartPrice } = useSelector((store) => store.product);
+  const {isLoggedIn}= useSelector(store => store.auth)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   console.log(allCartProducts, "allCartProducts");
@@ -57,7 +58,7 @@ const Review = () => {
       handler: function (response) {
         const paymentId = response.razorpay_payment_id;
         dispatch(postOrder(allCartProducts));
-        navigate("/order")
+        navigate("/order");
       },
 
       prefill: {
@@ -79,113 +80,124 @@ const Review = () => {
   return (
     <div>
       <Navbar />
-      {addressLoading ? <Loader /> : ""}
-      <div className="common-flex a-center j-center mr-sm-btm">
-        <div className="common-col  js-evenly mr-sm-btm gap-sm">
-          <div className="common-flex js-evenly ">
-            <h3 className="fs-xbg">Preview the details of order</h3>
-            <button
-              className="btn-primary"
-              onClick={() => {
-                displayRazorpayModal();
-              }}
-            >
-              Proceed to Pay
-            </button>
-          </div>
-          <div className="review-container">
-            <div className="address-container">
-              {allAddress.map(
-                ({
-                  city,
-                  country,
-                  mobileNumber,
-                  postalCode,
-                  street,
-                  state,
-                  fullName,
-                  id,
-                }) => {
-                  return (
-                    <div className=" address-block img-border">
-                      <div>
-                        <p>{fullName}</p>
-                        <p>{street}</p>
-                        <p>
-                          {city} <span>{postalCode}</span>
-                        </p>
-                        <p>{state}</p>
-                        <p>{country}</p>
-                        <p>{mobileNumber}</p>
-                      </div>
-                      <div className="common-flex a-start gap-xs">
-                        <button
-                          className="btn-primary"
-                          onClick={() => {
-                            navigate("/address");
-                            dispatch(setSelectedAddress(id));
-                          }}
-                        >
-                          <AiFillEdit />
-                        </button>
-
-                        <button
-                          className="btn-secondary"
-                          onClick={async () => {
-                            await dispatch(deleteAddress(id));
-                            dispatch(getAddress());
-                          }}
-                        >
-                          <AiTwotoneDelete />
-                        </button>
-                      </div>
-                    </div>
-                  );
-                }
-              )}
-            </div>
-            <div className="three-layout-grid">
-              {allCartProducts.map(
-                ({ name, avatar, videoUrl, price, rating, id }) => {
-                  return (
-                    <div>
-                      <div class="product-card">
-                        {/* <Link to={`/product/${id}`}> */}
-                        <div class="image-container">
-                          {avatar ? (
-                            <img
-                              src={avatar}
-                              alt="Product Image"
-                              class="product"
-                            />
-                          ) : (
-                            <video
-                              style={{ width: "10rem", height: "15rem" }}
-                              controls
+      {addressLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="common-flex a-center j-center mr-sm-btm">
+            <div className="common-col  js-evenly mr-sm-btm gap-sm">
+              <div className="common-flex js-evenly a-center ">
+                <h3 className="fs-xbg">Preview the details of order</h3>
+                <button
+                  className="btn-primary"
+                  onClick={() => {
+                    isLoggedIn ?
+                    displayRazorpayModal() : navigate("/login")
+                  }}
+                >
+                  Proceed to Pay
+                </button>
+              </div>
+              <div className="review-container">
+                <div className="address-container">
+                  {allAddress.map(
+                    ({
+                      city,
+                      country,
+                      mobileNumber,
+                      postalCode,
+                      street,
+                      state,
+                      fullName,
+                      id,
+                    }) => {
+                      return (
+                        <div className=" address-block img-border">
+                          <div className="address-details">
+                            <p>{fullName}</p>
+                            <p>{street}</p>
+                            <p>
+                              {city} <span>{postalCode}</span>
+                            </p>
+                            <p>{state}</p>
+                            <p>{country}</p>
+                            <p>{mobileNumber}</p>
+                          </div>
+                          <div className="common-flex a-start gap-xs">
+                            <button
+                              className="btn-primary"
+                              onClick={() => {
+                                navigate("/address");
+                                dispatch(setSelectedAddress(id));
+                              }}
                             >
-                              <source src={videoUrl} type="video/mp4"></source>
-                              Your browser does not support the video tag.
-                            </video>
-                          )}
-                        </div>
+                              <AiFillEdit />
+                            </button>
 
-                        {/* </Link> */}
-                        <div class="lower-card-info">
-                          <Link to={`/product/${id}`}>
-                            <h2 class="product-title mr-xs">{name}</h2>
-                            <p class="mr-xs">{generateRandomRating(rating)}</p>
-                            <p class="product-price">{price} </p>
-                          </Link>
+                            <button
+                              className="btn-secondary"
+                              onClick={async () => {
+                                await dispatch(deleteAddress(id));
+                                dispatch(getAddress());
+                              }}
+                            >
+                              <AiTwotoneDelete />
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  );
-                }
-              )}
+                      );
+                    }
+                  )}
+                </div>
+                <div className="three-layout-grid">
+                  {allCartProducts.map(
+                    ({ name, avatar, videoUrl, price, rating, id }) => {
+                      return (
+                        <div>
+                          <div class="product-card">
+                            {/* <Link to={`/product/${id}`}> */}
+                            <div class="image-container">
+                              {avatar ? (
+                                <img
+                                  src={avatar}
+                                  alt="Product Image"
+                                  class="product"
+                                />
+                              ) : (
+                                <video
+                                  style={{ width: "10rem", height: "15rem" }}
+                                  controls
+                                >
+                                  <source
+                                    src={videoUrl}
+                                    type="video/mp4"
+                                  ></source>
+                                  Your browser does not support the video tag.
+                                </video>
+                              )}
+                            </div>
+
+                            {/* </Link> */}
+                            <div class="lower-card-info">
+                              <Link to={`/product/${id}`}>
+                                <h2 class="product-title mr-xs">{name}</h2>
+                                <p class="mr-xs">
+                                  {generateRandomRating(rating)}
+                                </p>
+                                <p class="product-price">{price} </p>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+                  )}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };

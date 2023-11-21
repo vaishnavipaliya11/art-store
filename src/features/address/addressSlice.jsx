@@ -3,6 +3,7 @@ import { getAddress } from "./helpers/getAddress";
 import { postAddress } from "./helpers/postAddress";
 import { getSingleAddress } from "./helpers/getSingleAddress";
 import { updateAddress } from "./helpers/updateAddress";
+import toast from "react-hot-toast";
 
 export const initialState = {
   allAddress: [],
@@ -63,6 +64,7 @@ export const addressSlice = createSlice({
       })
       .addCase(postAddress.fulfilled, (state, { payload }) => {
         state.allPosts = payload;
+        toast.success("Address added!")
         state.loading = false;
       })
       .addCase(postAddress.rejected, (state) => {

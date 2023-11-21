@@ -7,6 +7,10 @@ import {
   filterCategories,
   filterProdHighToLow,
   filterProdLowToHigh,
+  filterRatingFourAbove,
+  filterRatingOneAbove,
+  filterRatingThreeAbove,
+  filterRatingTwoAbove,
 } from "../../features/product/productSlice";
 import { getProducts } from "../../features/product/helpers/getAllProduct";
 import { categoriesArr } from "../../constansts";
@@ -20,9 +24,9 @@ import { categoriesArr } from "../../constansts";
     dispatch(filterProdLowToHigh());
   };
   return (
-    <div>
+    <div className="mr-sm-top ">
       <div className="common-flex jst-sp-bet">
-        <h3>Filters</h3>
+        <p>Filters</p>
         <button
           className="read-more-btn"
           onClick={() => {
@@ -33,9 +37,9 @@ import { categoriesArr } from "../../constansts";
           Clear
         </button>
       </div>
-      <div className="common-col gap-sm ">
+      <div className="common-col gap-xs ">
         <div>
-          <h2 className="text-filter">Price</h2>
+          <p className="text-filter">Price</p>
           <div className="common-col">
             <label>
               <input
@@ -62,7 +66,7 @@ import { categoriesArr } from "../../constansts";
           </div>
         </div>
         <div>
-          <h3 className="text-filter">Categories</h3>
+          <p className="text-filter">Categories</p>
           <div className="common-col">
             {categoriesArr.map(({ name, text }) => {
               return (
@@ -80,7 +84,7 @@ import { categoriesArr } from "../../constansts";
                             )
                           : dispatch(addCategories([...categories, text]));
                       }
-                      await dispatch(filterCategories(text));
+                      // await dispatch(filterCategories(text));
                     }}
                   />{" "}
                   {name}
@@ -89,8 +93,8 @@ import { categoriesArr } from "../../constansts";
             })}
           </div>
         </div>
-        {/* <div>
-          <h3 className="text-filter">Rating</h3>
+        <div>
+          <p className="text-filter">Rating</p>
           <div className="common-col">
             <label>
               <input
@@ -133,7 +137,7 @@ import { categoriesArr } from "../../constansts";
               1 stars and above
             </label>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

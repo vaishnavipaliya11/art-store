@@ -23,15 +23,15 @@ const Navbar = () => {
   }, []);
   return (
     <div className="common-flex js-around nav-container">
-      <p className="text-primary fs-med" onClick={() => navigate("/")}>
-        Home
+      <p className="title text-primary fs-med" onClick={() => navigate("/")}>
+        Arto-G
       </p>
 
       <div>
       </div>
       <div className="jst-sp-bet common-flex a-center gap-sm">
         
-        <p className="para" onClick={() => navigate("/wishlist")}>
+        <p className="para pointer" onClick={() => navigate("/wishlist")}>
           {" "}
           <AiOutlineHeart className="icons"/>{" "}
           {allCartProducts ? (
@@ -40,7 +40,7 @@ const Navbar = () => {
             ""
           )}
         </p>
-        <p className="para" onClick={() => navigate("/cart")}>
+        <p className="para pointer" onClick={() => navigate("/cart")}>
           {" "}
           <BsBasket />{" "}
           {allCartProducts ? (
@@ -49,7 +49,7 @@ const Navbar = () => {
             ""
           )}
         </p>
-        <p>
+        <p className="pointer para">
           <BiSolidUser onClick={() => navigate("/profile")}/>
         </p>
       </div>

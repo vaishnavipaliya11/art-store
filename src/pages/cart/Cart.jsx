@@ -33,58 +33,81 @@ const Cart = () => {
   return (
     <div>
       <Navbar />
-      <div className="cart-container">
-        <>
-          {cartLoading ? <Loader /> : ""}
-        </>
-        <div>
-          {allCartProducts.map((data) => {
-            return <CartCard data={data} />;
-          })}
-          {/* {qtyLoading ? <Loader /> : ""} */}
-
-          <div className="common-col a-center j-center">
-            {" "}
-            {allCartProducts.length === 0 ? "Cart is empty" : ""}
-          </div>
-        </div>
-        {allCartProducts?.length > 0 ? (
-          <div>
-            <h2 className="price-head">Price Details</h2>
-            <div class="horizontal-line"></div>
-
-            <p className="common-flex jst-sp-bet">
-              Item(s) total{" "}
-              <span> ₹ {calcultateCartPrice(allCartProducts)} </span>
-            </p>
-            <p className="common-flex jst-sp-bet">
-              No of Items <span> {allCartProducts?.length} </span>
-            </p>
-            <p className="common-flex jst-sp-bet">
-              Delivery(To India) <span className="text-green-clr"> FREE </span>
-            </p>
-            <div class="horizontal-line"></div>
-
-            <p className="common-flex jst-sp-bet">
-              Total<span> ₹ {calcultateCartPrice(allCartProducts)} </span>
-            </p>
-
-            <div className="common-flex jst-sp-bet">
-              <button
-                className="btn-primary"
-                onClick={() => navigate("/address")}
-              >
-                Add address
-              </button>
-              <button className="btn-secondary" onClick={()=> navigate("/review")}>
-                Go with the default Address
-              </button>
-            </div>
-          </div>
+      <>
+        {cartLoading ? (
+          <Loader />
         ) : (
-          ""
+          <>
+            {allCartProducts.length === 0 ? (
+              <div>
+                <p>
+                  Your cart is waiting to be filled with goodies. Start browsing
+                </p>
+                <button
+                  className="btn-primary"
+                  onClick={() => navigate("/products")}
+                >
+                  Browse Collection
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="cart-container">
+                  <div>
+                    {allCartProducts.map((data) => {
+                      return <CartCard data={data} />;
+                    })}
+                    {/* {qtyLoading ? <Loader /> : ""} */}
+
+                    <div className="common-col a-center j-center"> </div>
+                  </div>
+                  {allCartProducts?.length > 0 ? (
+                    <div>
+                      <h2 className="price-head mr-zero">Price Details</h2>
+                      <div class="horizontal-line"></div>
+
+                      <p className="common-flex jst-sp-bet">
+                        Item(s) total{" "}
+                        <span> ₹ {calcultateCartPrice(allCartProducts)} </span>
+                      </p>
+                      <p className="common-flex jst-sp-bet">
+                        No of Items <span> {allCartProducts?.length} </span>
+                      </p>
+                      <p className="common-flex jst-sp-bet">
+                        Delivery(To India){" "}
+                        <span className="text-green-clr"> FREE </span>
+                      </p>
+                      <div class="horizontal-line"></div>
+
+                      <p className="common-flex jst-sp-bet">
+                        Total
+                        <span> ₹ {calcultateCartPrice(allCartProducts)} </span>
+                      </p>
+
+                      <div className="common-flex jst-sp-bet">
+                        <button
+                          className="btn-primary"
+                          onClick={() => navigate("/address")}
+                        >
+                          Add address
+                        </button>
+                        <button
+                          className="btn-secondary"
+                          onClick={() => navigate("/review")}
+                        >
+                          Go with the default Address
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </>
+            )}
+          </>
         )}
-      </div>
+      </>
     </div>
   );
 };

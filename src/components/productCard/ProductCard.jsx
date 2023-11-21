@@ -33,12 +33,12 @@ const ProductCard = ({ data }) => {
   } = data;
   const navigate = useNavigate();
 
-  const productIdsInWishlist = allwishlistProducts.map(
+  const productIdsInWishlist = allwishlistProducts?.map(
     (product) => product.wishlistItem.productId
   );
 
   const handleWishlistClick = async (cardProdId) => {
-    if (productIdsInWishlist.includes(cardProdId)) {
+    if (productIdsInWishlist?.includes(cardProdId)) {
       await dispatch(deleteWishlist(id));
       dispatch(getWishlist());
     } else {
@@ -72,7 +72,7 @@ const ProductCard = ({ data }) => {
               handleWishlistClick(id);
             }}
           >
-            {productIdsInWishlist.includes(id) ? (
+            {productIdsInWishlist?.includes(id) ? (
               <AiTwotoneHeart className="icon" />
             ) : (
               <AiOutlineHeart className="icon" />
@@ -98,13 +98,13 @@ const ProductCard = ({ data }) => {
       {/* </Link> */}
       <div class="lower-card-info">
         <Link to={`/product/${id}`}>
-          <h2 class="product-title mr-xs">{name}</h2>
+          <h2 class="product-title mr-xs " style={{color:"hsl(207, 7%, 31%)"}}>{name}</h2>
           <p class="mr-xs">
             {category}
             <span>{generateRandomRating(rating)}</span>
           </p>
           <p class="product-price">
-            {price}{" "}
+          ₹{price}{" "}
             <span className="fs-span text-gray">
               (40% off) <span className="fs-span text-gray">free delivery</span>
             </span>

@@ -30,7 +30,7 @@ const Login = () => {
             <button
               className="btn-secondary"
               onClick={() => {
-                dispatch(setLoggedUser(!isLoggedIn));
+                dispatch(setLoggedUser());
                 setAuthUserStorage();
                 navigate("/products");
               }}
@@ -40,7 +40,8 @@ const Login = () => {
             <button
               className="btn-primary"
               onClick={() => {
-                dispatch(setLoggedUser(!isLoggedIn));
+                // const 
+                dispatch(setLoggedUser());
                 setAuthUserStorage();
                 navigate("/products");
               }}

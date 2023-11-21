@@ -8,13 +8,24 @@
     color: #ffff;
     background-color: #b492dad9;
     position: absolute;
-    bottom: 1rem;
-    left: 0.5rem;
+    bottom: 20px;
+    left: 14px;
     border-radius: 50%;
     margin: 0;
     font-size: 8px;
 }
+
+.badge:hover{
+    cursor: pointer;
+}
 .para{
     position: relative;
     font-size: 1.2rem;
+}
+.title{
+    font-family: cursive;
+    line-height: 1rem;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    cursor: pointer;
 }

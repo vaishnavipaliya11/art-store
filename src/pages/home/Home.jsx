@@ -57,10 +57,10 @@ const Home = () => {
           </h2>
           <div className="common-flex a-center j-center gap-med">
             {dealsSet.map(({ name, img, note }) => (
-              <div className="picks-card" key={name}>
+              <div className="picks-card img-border cr-pointer " key={name} onClick={()=> navigate("/products")}>
                 <div className="picks-card-inner">
                   <img className="picks-img" src={img} alt={name} />
-                  <p className="pick-fs common-col a-center j-center">
+                  <p className="pick-fs common-col a-center j-center " >
                     {name} <span style={{ color: "#B6B6B4" }}>{note}</span>
                   </p>
                 </div>
@@ -69,7 +69,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="common-col j-center a-center gap-sm border-gray pd-med mr-med layout-mr ">
+        <div className="common-col j-center a-center gap-sm border-gray pd-med mr-med layout-mr img-border ">
           <div className="common-flex a-center gap-xs">
             <h3 className="fm-cur">
               Daily Doses of Artful Inspiration: Elevate Your Everyday
@@ -77,7 +77,7 @@ const Home = () => {
             {homeEverydayInspirationSetOne?.map(({ img, name }) => {
               return (
                 <div className="inspiration-set-one ">
-                  <img src={img} alt={name} />
+                  <img src={img} alt={name} className="img-border " />
                 </div>
               );
             })}
@@ -86,7 +86,7 @@ const Home = () => {
             {homeEverydayInspirationSetTwo?.map(({ img, name }) => {
               return (
                 <div className="inspiration-set-one ">
-                  <img src={img} alt={name} />
+                  <img src={img} alt={name} className="img-border "/>
                 </div>
               );
             })}
@@ -97,7 +97,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="common-col j-center a-center gap-sm border-gray pd-med mr-med layout-mr ">
+        <div className="common-col j-center a-center gap-sm border-gray pd-med mr-med layout-mr img-border ">
           <div className="common-flex a-center gap-xs">
             {posterImgOne?.map(({ img, text, video }) => {
               return (
@@ -106,9 +106,9 @@ const Home = () => {
                     <img src={img} alt={text} className="img-border" />
                   ) : (
                     <video
-                      style={{ width: "20rem", height: "10rem" }}
+                      style={{ width: "20rem", height: "10rem", borderRadius:"5px" }}
                       className="img-border"
-                      controls
+                      controls autoPlay
                     >
                       <source src={video} type="video/mp4"></source>
                       Your browser does not support the video tag.
