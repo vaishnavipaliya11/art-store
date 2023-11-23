@@ -11,13 +11,13 @@ import Login from "../login/Login";
 import { setLoggedUser } from "../../features/auth/authSlice";
 export const Profile = () => {
   const navigate = useNavigate();
-  const dispatch= useDispatch()
+  const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((store) => store.auth);
+  const { firebaseEmail } = useSelector((store) => store.auth);
   let userData;
   useEffect(() => {
-    dispatch(setLoggedUser())
+    dispatch(setLoggedUser());
     userData = getAuthUserStorage();
-     
   }, []);
 
   return (
@@ -44,7 +44,12 @@ export const Profile = () => {
                 <div className="common-col gap-sm a-center ">
                   <img src={userImg} alt="user-img" className="user-img" />
                   <p>Name : {getAuthUserStorage()?.name}</p>
-                  <p>Email : {getAuthUserStorage()?.email}</p>
+                  <p>
+                    Email :{" "}
+                    {firebaseEmail
+                      ? firebaseEmail
+                      : getAuthUserStorage()?.email}{" "}
+                  </p>
                 </div>
               </div>
             </div>

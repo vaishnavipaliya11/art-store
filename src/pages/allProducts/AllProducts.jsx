@@ -44,7 +44,7 @@ const AllProducts = () => {
       ) : (
         <div className="all-prod-container">
           <Sidenav />
-          <div className="five-grid-layout gap-xs a-start">
+          <div className="five-grid-layout gap-xs a-start all-prod">
             {filterProd?.map((data) => {
               return <ProductCard data={data} />;
             })}

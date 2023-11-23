@@ -2,14 +2,17 @@ const user = {
   name: "John Doe",
   profilePic: "profile1.jpg",
   address: "123 Main St, City, Country",
-  email:"jhondoe11@gmail.com"
+  email: "jhondoe11@gmail.com",
 };
 
-export const setAuthUserStorage = () => {
+export const setAuthUserStorage = (firebaseUser) => {
+  if (firebaseUser) {
+    localStorage.setItem("userDetails", JSON.stringify(firebaseUser));
+  }
   localStorage.setItem("userDetails", JSON.stringify(user));
 };
 
 export const getAuthUserStorage = () => {
-  const storedUserDetails = JSON.parse(localStorage.getItem('userDetails'));
-  return storedUserDetails
+  const storedUserDetails = JSON.parse(localStorage.getItem("userDetails"));
+  return storedUserDetails;
 };

@@ -9,6 +9,8 @@ export const initialState = {
     name: "",
     password: "",
   },
+  firebaseEmail: "",
+  authToken: "",
 };
 
 export const authSlice = createSlice({
@@ -16,31 +18,28 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setLoggedUser: (state) => {
-      const logUser= localStorage.getItem("userDetails") ? true :false
-      console.log(logUser,"logUser");
+      const logUser = localStorage.getItem("userDetails") ? true : false;
+      console.log(logUser, "logUser");
       // state.isLoggedIn = action.payload
-      state.isLoggedIn= logUser
+      state.isLoggedIn = logUser;
     },
     logOutUser: (state) => {
-      localStorage.removeItem("userDetails")
+      localStorage.removeItem("userDetails");
       // state.isLoggedIn = action.payload
-      state.isLoggedIn= false
+      state.isLoggedIn = false;
+    },
+    setAuthToken: (state, action) => {
+      state.authToken = action.payload;
+    },
+    setFirebaseEmail: (state, action) => {
+      state.firebaseEmail = action.payload;
     },
   },
 
   extraReducers: (builder) => {
     builder;
-    // .addCase(getAllPosts.pending, (state) => {
-    //   state.loading = true;
-    // })
-    // .addCase(getAllPosts.fulfilled, (state, { payload }) => {
-    //   // state.allPosts = payload?.posts;
-    //   state.loading = false;
-    // })
-    // .addCase(getAllPosts.rejected, (state) => {
-    //   state.loading = false;
-    // });
   },
 });
-export const { setLoggedUser,logOutUser } = authSlice.actions;
+export const { setLoggedUser, logOutUser, setFirebaseEmail, setAuthToken } =
+  authSlice.actions;
 export default authSlice.reducer;

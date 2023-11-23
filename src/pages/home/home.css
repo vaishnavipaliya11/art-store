@@ -2,16 +2,7 @@
   width: 8rem;
   height: 8rem;
 }
-.category-container {
-  gap: 2rem;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(121, 88, 159, 0.6896008403361344) 100%
-  );
-  padding: 1rem;
-}
+
 .cat-fs {
   font-size: 0.8rem;
   letter-spacing: 1px;
@@ -78,16 +69,22 @@
   transition: transform 0.3s;
 }
 
-.projectDetails-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
- 
-}
+
 .gradient-green{
   background: rgb(236,252,203);
 background: linear-gradient(90deg, rgba(236,252,203,1) 0%, rgba(255,255,255,1) 50%, rgba(236,252,203,1) 100%);
 }
 .inspiration-set-one img{
   max-width: 10rem;
+}
+.inspiration-set-two-parent{
+  display: flex;
+}
+@media only screen and (max-width: 650px) {
+  .inspiration-set-one img{
+    max-width: 7rem;
+  }
+  .inspiration-set-two-parent{
+    display: flex; 
+  }
 }

@@ -24,7 +24,7 @@ import { categoriesArr } from "../../constansts";
     dispatch(filterProdLowToHigh());
   };
   return (
-    <div className="mr-sm-top ">
+    <div className="mr-sm-top side-nav">
       <div className="common-flex jst-sp-bet">
         <p>Filters</p>
         <button
@@ -74,6 +74,7 @@ import { categoriesArr } from "../../constansts";
                   <input
                     type="checkbox"
                     // value={filterProd}
+                    checked={categories.includes(text) ? true :false}
                     onChange={async () => {
                       {
                         categories.includes(text)
@@ -84,7 +85,6 @@ import { categoriesArr } from "../../constansts";
                             )
                           : dispatch(addCategories([...categories, text]));
                       }
-                      // await dispatch(filterCategories(text));
                     }}
                   />{" "}
                   {name}

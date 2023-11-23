@@ -312,7 +312,111 @@
 .cart-container::-webkit-scrollbar {
   width: 12px;
 }
-
+.single-prod-container {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: auto; /* Horizontal layout */
+}
+.cart-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 1rem;
+  overflow: auto;
+}
+.review-container{
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap:1rem
+}
+.projectDetails-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+ 
+}
+.category-container {
+  gap: 2rem;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(121, 88, 159, 0.6896008403361344) 100%
+  );
+  padding: 1rem;
+}
+.inspiration-set-one-parent{
+  display: flex;
+}
 ::-webkit-scrollbar-track {
   display: none;
+}
+
+@media only screen and (max-width: 650px) {
+  html {
+    font-size: 80%;
+  }
+  .five-grid-layout{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 1rem;
+  }
+  .all-prod-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 2rem 0.5rem ;
+  }
+  .cart-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .review-container{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .four-layout-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .projectDetails-container{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .side-nav{
+    display: none;
+  }
+  #all-orders{
+    display: flex;
+    flex-direction: column;
+  }
+  .single-prod-container{
+    display: flex;
+    flex-direction: column;
+  }
+  .category-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 45%;
+    justify-content: center;
+    align-items: center;
+  }
+  .picks-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 45%;
+  }
+  .inspiration-set-one-parent{
+    display: flex;
+  }
+  .max-width{
+    max-width: 45%;
+  }
+  .max-width .common-flex{
+    flex-direction: column;
+  }
+  .nav-container{
+    max-width: 50%;
+  }
 }

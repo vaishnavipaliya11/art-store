@@ -19,12 +19,15 @@ import {
   multipleImgSet,
 } from "../../constansts";
 import Footer from "../../components/footer/Footer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getCategoryProd } from "../../features/product/helpers/getCategoryProd";
+import { addCategories } from "../../features/product/productSlice";
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { filterProd, categories } = useSelector((store) => store.product);
+
   return (
     <div className="main-container">
       <Navbar />
@@ -38,7 +41,15 @@ const Home = () => {
                   <div
                     className="common-col a-center j-center cat-gap"
                     onClick={() => {
-                      dispatch(getCategoryProd(apicat));
+                      {
+                        categories.includes(apicat)
+                          ? dispatch(
+                              addCategories(
+                                categories?.filter((data) => data !== apicat)
+                              )
+                            )
+                          : dispatch(addCategories([...categories, apicat]));
+                      }
                       navigate("/products");
                     }}
                   >
@@ -55,12 +66,16 @@ const Home = () => {
           <h2 className="fs-bg top-picks" onClick={() => navigate("/products")}>
             Top Picks for you <AiOutlineArrowRight className="arrow" />{" "}
           </h2>
-          <div className="common-flex a-center j-center gap-med">
+          <div className="picks-container common-flex a-center j-center gap-med">
             {dealsSet.map(({ name, img, note }) => (
-              <div className="picks-card img-border cr-pointer " key={name} onClick={()=> navigate("/products")}>
+              <div
+                className="picks-card img-border cr-pointer "
+                key={name}
+                onClick={() => navigate("/products")}
+              >
                 <div className="picks-card-inner">
                   <img className="picks-img" src={img} alt={name} />
-                  <p className="pick-fs common-col a-center j-center " >
+                  <p className="pick-fs common-col a-center j-center ">
                     {name} <span style={{ color: "#B6B6B4" }}>{note}</span>
                   </p>
                 </div>
@@ -69,31 +84,35 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="common-col j-center a-center gap-sm border-gray pd-med mr-med layout-mr img-border ">
+        <div className="common-col j-center a-center gap-sm border-gray pd-med mr-med layout-mr img-border max-width">
           <div className="common-flex a-center gap-xs">
-            <h3 className="fm-cur">
+            <p className="fm-cur">
               Daily Doses of Artful Inspiration: Elevate Your Everyday
-            </h3>
-            {homeEverydayInspirationSetOne?.map(({ img, name }) => {
-              return (
-                <div className="inspiration-set-one ">
-                  <img src={img} alt={name} className="img-border " />
-                </div>
-              );
-            })}
+            </p>
+            <div className="inspiration-set-one-parent">
+              {homeEverydayInspirationSetOne?.map(({ img, name }) => {
+                return (
+                  <div className="inspiration-set-one ">
+                    <img src={img} alt={name} className="img-border " />
+                  </div>
+                );
+              })}
+            </div>
           </div>
           <div className="common-flex a-center gap-xs">
-            {homeEverydayInspirationSetTwo?.map(({ img, name }) => {
-              return (
-                <div className="inspiration-set-one ">
-                  <img src={img} alt={name} className="img-border "/>
-                </div>
-              );
-            })}
-            <h3 className="fm-cur">
+            <div className="inspiration-set-two-parent">
+              {homeEverydayInspirationSetTwo?.map(({ img, name }) => {
+                return (
+                  <div className="inspiration-set-one ">
+                    <img src={img} alt={name} className="img-border " />
+                  </div>
+                );
+              })}
+            </div>
+            <p className="fm-cur">
               Crafting Beauty in the Ordinary: Where Everyday Life Meets
               Artistic Expression
-            </h3>
+            </p>
           </div>
         </div>
 
@@ -106,9 +125,14 @@ const Home = () => {
                     <img src={img} alt={text} className="img-border" />
                   ) : (
                     <video
-                      style={{ width: "20rem", height: "10rem", borderRadius:"5px" }}
+                      style={{
+                        width: "20rem",
+                        height: "10rem",
+                        borderRadius: "5px",
+                      }}
                       className="img-border"
-                      controls autoPlay
+                      controls
+                      autoPlay
                     >
                       <source src={video} type="video/mp4"></source>
                       Your browser does not support the video tag.
@@ -170,18 +194,20 @@ const Home = () => {
           </div> */}
         </div>
 
-        <div className="common-col a-center gap-sm pd-med gradient-green">
-          <h2 className="fs-bg top-picks">What is Store?</h2>
+        <div className="abcd">
+          <div className="common-col a-center gap-sm pd-med gradient-green max-width">
+            <h2 className="fs-bg top-picks">What is Arto-G?</h2>
 
-          <div className="projectDetails-container layout-mr">
-            {projectDetails.map(({ heading, description }) => {
-              return (
-                <div>
-                  <h3 className="fs-med fm-cur ">{heading}</h3>
-                  <p className="fm-cur ">{description}</p>
-                </div>
-              );
-            })}
+            <div className="projectDetails-container layout-mr">
+              {projectDetails.map(({ heading, description }) => {
+                return (
+                  <div>
+                    <h3 className="fs-med fm-cur ">{heading}</h3>
+                    <p className="fm-cur ">{description}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

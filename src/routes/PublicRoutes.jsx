@@ -14,6 +14,7 @@ import Order from "../pages/order/Order";
 import { Profile } from "../pages/profile/Profile";
 import { AllAddress } from "../pages/address/AllAddress";
 import { Setting } from "../pages/setting/setting";
+import { NotFound } from "../pages/notFound/NotFound";
 
 const PublicRoutes = () => {
   return (
@@ -37,6 +38,7 @@ const PublicRoutes = () => {
         <Route path="/review" element={<Review />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/order" element={<Order />}></Route>
+        <Route path="*" element={<NotFound />} />
 
       </Routes>
     </div>

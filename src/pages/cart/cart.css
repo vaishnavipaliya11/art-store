@@ -5,13 +5,7 @@
   padding: 1rem;
   margin-bottom: 1.2rem;
 }
-.cart-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin: 1rem;
-  overflow: auto;
-}
+
 .qty-btn{
     background-color: #f1f5f9;
     border:1px solid var(--primary-clr);

@@ -9,8 +9,8 @@ export const initialState = {
   allProducts: [],
   singleProd: {},
   productLoading: true,
-  singleProdLoading:true,
-  deleteProductLoading:false,
+  singleProdLoading: true,
+  deleteProductLoading: false,
   editedProductId: "",
   isEditProduct: false,
   categories: [],
@@ -83,14 +83,12 @@ export const productSlice = createSlice({
         categories: action.payload,
       };
     },
-    filterCategories: (state, action) => {
-     
-    },
+    filterCategories: (state, action) => {},
 
     clearFilter: (state) => {
-      (state.filterProd.categories = []),
-        (state.filterProd.hightoLow = false),
-        (state.filterProd.rating = 0);
+      state.categories = [];
+      state.filterProd.hightoLow = false;
+      state.filterProd.rating = 0;
       state.filterProd.lowtoHigh = false;
     },
   },
