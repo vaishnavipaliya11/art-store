@@ -4,6 +4,7 @@ import { getWishlist } from "../../features/wishlist/helpers/getWishlist";
 import ProductCard from "../../components/productCard/ProductCard";
 import Navbar from "../../components/navbar/Navbar";
 import { useNavigate } from "react-router-dom";
+import WishlistCard from "../../components/productCard/WishlistCard";
 
 const Wishlist = () => {
   const { allwishlistProducts } = useSelector((store) => store.wishlist);
@@ -35,7 +36,7 @@ const Wishlist = () => {
           <>
             {" "}
             {allwishlistProducts?.map((data) => {
-              return <ProductCard data={data} />;
+              return <WishlistCard data={data} />;
             })}{" "}
           </>
         )}

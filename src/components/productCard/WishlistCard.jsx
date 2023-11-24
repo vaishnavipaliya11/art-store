@@ -14,7 +14,7 @@ import { getWishlist } from "../../features/wishlist/helpers/getWishlist";
 import { deleteWishlist } from "../../features/wishlist/helpers/deleteWishlist";
 import { getProducts } from "../../features/product/helpers/getAllProduct";
 
-const ProductCard = ({ data }) => {
+const WishlistCard = ({ data }) => {
   const { isAdmin } = useSelector((store) => store.auth);
   const { allwishlistProducts } = useSelector((store) => store.wishlist);
   const { allProducts } = useSelector((store) => store.product);
@@ -37,20 +37,14 @@ const ProductCard = ({ data }) => {
     (product) => product?.id
   );
 
-  
   const productNameInWishlist = allwishlistProducts?.map(
     (product) => product?.name
-  ); 
+  );
 
   const handleWishlistClick = async (cardProdId) => {
-    if (productNameInWishlist?.includes(data.name)) {
-   navigate("/wishlist")
-    } else {
-      console.log("else part");
-      const tempData= {...data, prodId:data?.id}
-      await dispatch(postWishlist(data));
-      dispatch(getWishlist());
-    }
+    console.log("if part");
+    await dispatch(deleteWishlist(id));
+    dispatch(getWishlist());
   };
 
   useEffect(() => {
@@ -150,4 +144,4 @@ const ProductCard = ({ data }) => {
   );
 };
 
-export default ProductCard;
+export default WishlistCard;
