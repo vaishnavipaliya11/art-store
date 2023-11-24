@@ -34,15 +34,23 @@ const ProductCard = ({ data }) => {
   const navigate = useNavigate();
 
   const productIdsInWishlist = allwishlistProducts?.map(
-    (product) => product.wishlistItem.productId
+    (product) => product?.id
   );
 
+  
+  const productNameInWishlist = allwishlistProducts?.map(
+    (product) => product?.name
+  ); 
+
   const handleWishlistClick = async (cardProdId) => {
-    if (productIdsInWishlist?.includes(cardProdId)) {
+    if (productNameInWishlist?.includes(data.name)) {
+      console.log("if part");
       await dispatch(deleteWishlist(id));
       dispatch(getWishlist());
     } else {
-      await dispatch(postWishlist(id));
+      console.log("else part");
+      const tempData= {...data, prodId:data?.id}
+      await dispatch(postWishlist(data));
       dispatch(getWishlist());
     }
   };
@@ -72,7 +80,7 @@ const ProductCard = ({ data }) => {
               handleWishlistClick(id);
             }}
           >
-            {productIdsInWishlist?.includes(id) ? (
+            {productNameInWishlist?.includes(data.name) ? (
               <AiTwotoneHeart className="icon" />
             ) : (
               <AiOutlineHeart className="icon" />
@@ -98,13 +106,18 @@ const ProductCard = ({ data }) => {
       {/* </Link> */}
       <div class="lower-card-info">
         <Link to={`/product/${id}`}>
-          <h2 class="product-title mr-xs " style={{color:"hsl(207, 7%, 31%)"}}>{name}</h2>
+          <h2
+            class="product-title mr-xs "
+            style={{ color: "hsl(207, 7%, 31%)" }}
+          >
+            {name}
+          </h2>
           <p class="mr-xs">
             {category}
             <span>{generateRandomRating(rating)}</span>
           </p>
           <p class="product-price">
-          ₹{price}{" "}
+            ₹{price}{" "}
             <span className="fs-span text-gray">
               (40% off) <span className="fs-span text-gray">free delivery</span>
             </span>

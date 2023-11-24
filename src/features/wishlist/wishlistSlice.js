@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getWishlist } from "./helpers/getWishlist";
 import { postWishlist } from "./helpers/postWishlist";
 import { deleteWishlist } from "./helpers/deleteWishlist";
+import toast from "react-hot-toast";
 
 export const initialState = {
   allwishlistProducts: [],
@@ -31,6 +32,7 @@ export const wishlistSlice = createSlice({
       })
       .addCase(postWishlist.fulfilled, (state, { payload }) => {
         console.log(payload);
+        toast.success("Added to Wishlist");
         // state.singleProd = payload;
         state.loading = false;
       })
@@ -42,7 +44,8 @@ export const wishlistSlice = createSlice({
         state.loading = true;
       })
       .addCase(deleteWishlist.fulfilled, (state, { payload }) => {
-        console.log(payload);
+        toast.success("Removed from Wishlist");
+
         state.loading = false;
       })
       .addCase(deleteWishlist.rejected, (state) => {

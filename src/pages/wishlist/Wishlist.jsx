@@ -11,7 +11,7 @@ const Wishlist = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // dispatch(getWishlist());
+    dispatch(getWishlist());
   }, []);
   return (
     <div>

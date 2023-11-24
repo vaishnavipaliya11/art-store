@@ -280,3 +280,9 @@ export const getOrderUrl = "https://6527947d917d673fd76dd8f1.mockapi.io/order";
 export const getAddressUrl="https://6527947d917d673fd76dd8f1.mockapi.io/address"
 
 export const postOrderUrl="https://6527947d917d673fd76dd8f1.mockapi.io/order"
+
+export const getWishlistUrl = "https://621d070d806a09850a500b05.mockapi.io/api/wishlist";
+
+export const postWishlistUrl="https://621d070d806a09850a500b05.mockapi.io/api/wishlist"
+
+export const deleteWishlistUrl="https://6527947d917d673fd76dd8f1.mockapi.io/order"

@@ -11,6 +11,7 @@ import {
 import Loader from "../../components/loader/Loader";
 import Sidenav from "../../components/sidenav/Sidenav";
 import { all } from "axios";
+import { getWishlist } from "../../features/wishlist/helpers/getWishlist";
 
 const AllProducts = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const AllProducts = () => {
   useEffect(() => {
     dispatch(setEditedProductIdNull(editedProductId));
     dispatch(setSingleProdNull());
+    dispatch(getWishlist());
   }, []);
 
   return (
