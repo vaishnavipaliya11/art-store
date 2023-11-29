@@ -137,7 +137,7 @@ export const projectDetails = [
     heading: "Empowering Artisans",  
     img:"",
     description:
-      "We're not just another faceless warehouse.We're here to simplify the journey, connecting you directly with these talented makers, enabling you to discover artistic treasures that resonate with your spirit.",
+      "We're here to simplify the journey, connecting you directly with these talented makers, enabling you to discover artistic treasures that resonate with your spirit.",
   },
   {
     heading: "Prioritizing Your Peace",
