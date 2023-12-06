@@ -116,17 +116,21 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="common-col j-center a-center gap-sm border-gray pd-med mr-med layout-mr img-border ">
-          <div className="common-flex a-center gap-xs">
+        <div className="common-col j-center a-center gap-sm border-gray pd-med mr-med layout-mr img-border poster-width">
+          <div className="common-flex a-center gap-xs poster-img">
             {posterImgOne?.map(({ img, text, video }) => {
               return (
                 <div className="inspiration-set-one">
                   {img ? (
-                    <img src={img} alt={text} className="img-border" />
+                    <img
+                      src={img}
+                      alt={text}
+                      className="img-border poster-img"
+                    />
                   ) : (
                     <video
                       style={{
-                        width: "20rem",
+                        maxWidth: "20rem",
                         height: "10rem",
                         borderRadius: "5px",
                       }}
@@ -142,12 +146,16 @@ const Home = () => {
               );
             })}
           </div>
-          <div className="common-flex a-center gap-xs">
+          <div className="common-flex a-center gap-xs poster-container">
             {posterImgTwo?.map(({ img, text, video }) => {
               return (
                 <div className="inspiration-set-one ">
                   {img ? (
-                    <img src={img} alt={text} className="img-border" />
+                    <img
+                      src={img}
+                      alt={text}
+                      className="img-border poster-img"
+                    />
                   ) : (
                     <video
                       style={{ width: "20rem", height: "10rem" }}
@@ -162,36 +170,6 @@ const Home = () => {
               );
             })}
           </div>
-
-          {/* <div className="common-flex a-center gap-xs">
-            <div className="common-flex gap-xs">
-              <video style={{ width: "40%", height: "40%" }} controls>
-                <source
-                  src="https://v.etsystatic.com/video/upload/ac_none,du_15,q_auto:good/20221102_155505_taoz7r.mp4"
-                  type="video/mp4"
-                ></source>
-                Your browser does not support the video tag.
-              </video>
-
-              <div className="common-col jst-sp-bet">
-                <p>
-                  Explore a world of unique treasures crafted by independent
-                  artisans and creators. From handmade jewelry to bespoke home
-                  decor, discover one-of-a-kind items that tell a story and
-                  capture the essence of creativity.
-                </p>
-                <div className="three-layout-grid gap-xxs">
-                  {multipleImgSet.map(({ img, text }) => {
-                    return (
-                      <div>
-                        <img src={img} alt={text} />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div> */}
         </div>
 
         <div className="abcd">
